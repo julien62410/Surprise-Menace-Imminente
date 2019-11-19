@@ -8,18 +8,22 @@ public class EnnemyControl : MonoBehaviour
     public GameObject ennemy;
 
     public float speed;
-
+    public float distanceToHit = 1;
 
     private void Start()
     {
         player = EnnemySpawn.Instance.arCamera.gameObject;
         speed = EnnemySpawn.Instance.speed;
+        distanceToHit = EnnemySpawn.Instance.distanceToHit;
     }
 
     private void Update()
     {
-        MoveEnnemy();
-        DistanceWithPlayer();
+        if (this.gameObject.activeInHierarchy)
+        {
+            MoveEnnemy();
+            DistanceWithPlayer();
+        }
     }
 
     private void MoveEnnemy()
@@ -32,7 +36,7 @@ public class EnnemyControl : MonoBehaviour
     {
         float _distance = Vector3.Distance(ennemy.transform.position, player.transform.position);
 
-        if (_distance < 1)
+        if (_distance < distanceToHit)
         {
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
         }

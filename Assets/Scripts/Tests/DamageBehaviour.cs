@@ -10,15 +10,31 @@ public class DamageBehaviour : MonoBehaviour
 
     private Collider col2d;
     private float timer;
+    private int hpSave;
+    private bool isInit = false;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (!isInit)
+        {
+            hpSave = hp;
+            isInit = true;
+        }
+
+    }
+
     void Start()
     {
         timer = 0f;
-        col2d = GetComponent<Collider>();
+        col2d = this.GetComponent<EnnemyControl>().ennemy.GetComponent<Collider>();
     }
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        hp = hpSave;
+    }
+
     void Update()
     {
         timer += Time.deltaTime;
@@ -40,7 +56,7 @@ public class DamageBehaviour : MonoBehaviour
 
     private void TriggerDeath()
     {
-        Debug.Log(name + " died");
+        EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
     }
 
 }
