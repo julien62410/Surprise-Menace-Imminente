@@ -4,55 +4,56 @@ using UnityEngine;
 
 public class EnnemySpawn : MonoBehaviour
 {
+    private static EnnemySpawn _instance;
+    public static EnnemySpawn Instance { get { return _instance; } }
+
     public GameObject ennemy;
     public Camera arCamera;
 
     public float spawnDistance;
     public float speed;
-    private bool isEnnemySpawned = false;
+    public int ennemyCountPerSpawn = 1;
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     private void Start()
     {
-        RespawnEnnemy();
+        SpawnEnnemy();
     }
 
-    private void Update()
+    private void SpawnEnnemy(int number = 1)
     {
-        MoveEnnemy();
-        DetectColisionWithPlayer();
-    }
-
-    private void RespawnEnnemy()
-    {
-        int _rotation = Random.Range(0, 361);
-        ennemy.transform.position = new Vector3(spawnDistance, 0, 0);
-        ennemy.transform.LookAt(arCamera.transform);
-        transform.eulerAngles = new Vector3(0, _rotation, 0);
-        ennemy.SetActive(true); 
-        isEnnemySpawned = true;
-    }
-
-    private void MoveEnnemy()
-    {
-        if (isEnnemySpawned)
+        for (int i = 0; i < ennemyCountPerSpawn; i++)
         {
-            float _step = speed * Time.deltaTime;
-            ennemy.transform.position = Vector3.MoveTowards(ennemy.transform.position, arCamera.transform.position, _step);
+            int _rotation = Random.Range(0, 361);
+
+            GameObject _ennemy = Instantiate(ennemy);
+
+            EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
+
+            _ennemyControl.ennemy.transform.position = new Vector3(spawnDistance, 0, 0);
+            _ennemyControl.ennemy.transform.LookAt(arCamera.transform);
+            _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
+            _ennemy.transform.SetParent(this.transform);
         }
+
+
     }
 
-    private void DetectColisionWithPlayer()
+    public void CollisionWithPlayer(GameObject collider)
     {
-        if (isEnnemySpawned)
-        {
-           float _distance = Vector3.Distance(ennemy.transform.position, arCamera.transform.position); 
-
-            if (_distance < 1f)
-            {
-                ennemy.SetActive(false);
-                RespawnEnnemy();
-            }
-        }
+        Destroy(collider);
+        SpawnEnnemy(ennemyCountPerSpawn);
     }
+
 
 }

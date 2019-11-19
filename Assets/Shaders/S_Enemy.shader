@@ -19,12 +19,21 @@ Shader "Unlit/S_Enemy"
 		_WiggleMin("Wiggle Min", float) = 0.5
 		_WiggleMax("Wiggle Max", float) = 0.6
 		_WiggleFreq("Wiggle Freq", float) = 10
+
+		[Header(Arm)]
+		_ArmStep("Arm Step", float) = 0.5
+		_ArmDistort("Arm Distort", float) = 0.2
+		_ArmExponent("Arm Exponent", float) = 1.5
+		/*[Header(Mouth)]
+		_MouthSize("Mouth Size", Range(0,5)) = 0.5
+		_MouthSmooth("Mouth Smoothness", Range(0,1)) = 0.5*/
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
         LOD 100
-			//Blend One One
+			//Blend SrcAlpha OneMinusSrcAlpha
+			Blend One One
 
         Pass
         {
@@ -38,6 +47,7 @@ Shader "Unlit/S_Enemy"
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float2 uv2 : TEXCOORD1;
 				float3 normal : NORMAL;
 				float3 viewDir : TEXCOORD2;
             };
@@ -45,6 +55,7 @@ Shader "Unlit/S_Enemy"
             struct v2f
             {
                 float2 uv : TEXCOORD0;
+                float2 uv2 : TEXCOORD1;
                 float4 vertex : SV_POSITION;
 				float3 normal : NORMAL;
 				float3 viewDir : POSITION1;
@@ -64,6 +75,14 @@ Shader "Unlit/S_Enemy"
 			float _WiggleFreq;
 			float _WiggleMin;
 			float _WiggleMax;
+
+			float _ArmStep;
+			float _ArmDistort;
+			float _ArmExponent;
+
+/*
+			float _MouthSmooth;
+			float _MouthSize;*/
 
 			fixed4 _LightDir;
 
@@ -86,6 +105,18 @@ Shader "Unlit/S_Enemy"
 				float wig = sin(_Time.y * _WiggleSpeed + vertexZ * _WiggleFreq + offset)* _WiggleStrength * smoothstep(_WiggleMin, _WiggleMax, vertexZ);
 				return wig;
 			}
+/*
+			float mouth(float inMouth)
+			{
+				return smoothstep(_MouthSize, _MouthSize + _MouthSmooth, inMouth);
+			}*/
+
+			float arm(float3 vertex)
+			{
+				float vert = abs(vertex.x);
+				float s = smoothstep(_ArmStep, _ArmStep + .2, vert);
+				return s * exp(vert * _ArmExponent) * _ArmDistort + s * .2;
+			}
 
             v2f vert (appdata v)
             {
@@ -96,23 +127,32 @@ Shader "Unlit/S_Enemy"
 				float wiggleY = wiggleAmount(0.5, v.vertex.z);
 				v.vertex.y += wiggleY * 1.2;
 
+				v.vertex.z += arm(v.vertex);
+
 				o.pos = v.vertex;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv2 = TRANSFORM_TEX(v.uv2, _MainTex);
+
 				o.normal = UnityObjectToWorldNormal(v.normal);
 				o.viewDir = WorldSpaceViewDir(v.vertex);
+
                 return o;
             }
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				fixed4 noise = tex2D(_MainTex, i.uv);
-				float posNoise = noise + i.uv.y;
-				fixed4 col = lerp(_ColorA, _ColorB, i.pos.z + noise);
+				fixed4 tex = tex2D(_MainTex, i.uv);
+				float posNoise = tex + i.uv.y;
+
+
+				fixed4 col = lerp(_ColorA, _ColorB, i.pos.z + tex);
 				float shadow = toon(i.normal);
+
 				fixed4 applyShadow = lerp(col * _ShadowColor, col, shadow);
 				fixed4 fresn = fresnel(i.normal, i.viewDir, 1) * _FresnelColor;
 				col = applyShadow + fresn;
+
                 return col;
             }
             ENDCG
