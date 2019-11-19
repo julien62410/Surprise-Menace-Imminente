@@ -27,6 +27,8 @@ Shader "Unlit/S_Enemy"
 		/*[Header(Mouth)]
 		_MouthSize("Mouth Size", Range(0,5)) = 0.5
 		_MouthSmooth("Mouth Smoothness", Range(0,1)) = 0.5*/
+
+		_Gonfle("Gonfle", float) = 0
     }
     SubShader
     {
@@ -34,6 +36,7 @@ Shader "Unlit/S_Enemy"
         LOD 100
 			//Blend SrcAlpha OneMinusSrcAlpha
 			Blend One One
+			Cull Back
 
         Pass
         {
@@ -80,6 +83,8 @@ Shader "Unlit/S_Enemy"
 			float _ArmDistort;
 			float _ArmExponent;
 
+			float _Gonfle;
+
 /*
 			float _MouthSmooth;
 			float _MouthSize;*/
@@ -122,12 +127,14 @@ Shader "Unlit/S_Enemy"
             {
                 v2f o;
 				float wiggleX = wiggleAmount(0, v.vertex.z);
-				v.vertex.x += wiggleX;
+				v.vertex.x -= wiggleX * 0.5;
 
 				float wiggleY = wiggleAmount(0.5, v.vertex.z);
-				v.vertex.y += wiggleY * 1.2;
+				v.vertex.y += wiggleY * 1.2 - 0.12;
 
-				v.vertex.z += arm(v.vertex);
+				v.vertex.z += arm(v.vertex) * 0.5;
+
+				v.vertex.xyz += v.normal * _Gonfle;
 
 				o.pos = v.vertex;
                 o.vertex = UnityObjectToClipPos(v.vertex);
@@ -146,7 +153,7 @@ Shader "Unlit/S_Enemy"
 				float posNoise = tex + i.uv.y;
 
 
-				fixed4 col = lerp(_ColorA, _ColorB, i.pos.z + tex);
+				fixed4 col = lerp(_ColorA, _ColorB, i.pos.z + tex + 0.5);
 				float shadow = toon(i.normal);
 
 				fixed4 applyShadow = lerp(col * _ShadowColor, col, shadow);
