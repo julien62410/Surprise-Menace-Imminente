@@ -31,7 +31,7 @@ public class ImminentDanger : MonoBehaviour
             }
             if (a)
             {
-                a.volume = 0.5f - mag;
+                a.volume = 1f - mag;
             }
         }
         effect.intensity = 1 - ratio;
