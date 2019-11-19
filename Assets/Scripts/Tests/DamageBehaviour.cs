@@ -7,8 +7,8 @@ public class DamageBehaviour : MonoBehaviour
 
     public int hp;
     public float damageDelay;
+    public Collider col2d;
 
-    private Collider col2d;
     private float timer;
     private int hpSave;
     private bool isInit = false;
@@ -27,7 +27,6 @@ public class DamageBehaviour : MonoBehaviour
     void Start()
     {
         timer = 0f;
-        col2d = this.GetComponent<EnnemyControl>().ennemy.GetComponent<Collider>();
     }
 
     private void OnEnable()

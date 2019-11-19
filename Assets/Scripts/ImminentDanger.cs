@@ -23,9 +23,15 @@ public class ImminentDanger : MonoBehaviour
         Collider[] overlaped = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Enemy"));
         foreach(Collider c in overlaped)
         {
-            if ((c.transform.position - transform.position).magnitude < ratio)
+            AudioSource a = c.GetComponent<AudioSource>();
+            float mag = (c.transform.position - transform.position).magnitude;
+            if (mag < ratio)
             {
-                ratio = (c.transform.position - transform.position).magnitude;
+                ratio = mag;
+            }
+            if (a)
+            {
+                a.volume = 1f - mag;
             }
         }
         effect.intensity = 1 - ratio;
