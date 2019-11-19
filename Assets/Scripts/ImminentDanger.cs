@@ -20,7 +20,7 @@ public class ImminentDanger : MonoBehaviour
     void Update()
     {
         ratio = 1f;
-        Collider[] overlaped = Physics.OverlapSphere(transform.position, radius);
+        Collider[] overlaped = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Enemy"));
         foreach(Collider c in overlaped)
         {
             if ((c.transform.position - transform.position).magnitude < ratio)
