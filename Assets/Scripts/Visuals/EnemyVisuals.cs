@@ -31,7 +31,7 @@ public class EnemyVisuals : MonoBehaviour
 
     private void UpdateInitialScales()
     {
-        if(toScale.Length != initialScales.Count)
+        if (toScale.Length != initialScales.Count)
         {
             initialScales.Clear();
             for (int i = 0; i < toScale.Length; i++)
@@ -52,8 +52,11 @@ public class EnemyVisuals : MonoBehaviour
         {
             toShake[i].intensity = shake * explosionProgress;
         }
-        Material mat = rend.sharedMaterial;
-        mat.SetFloat("_Gonfle", maxGonfle * explosionProgress);
-        rend.sharedMaterial = mat;
+        if (rend)
+        {
+            Material mat = rend.sharedMaterial;
+            mat.SetFloat("_Gonfle", maxGonfle * explosionProgress);
+            rend.sharedMaterial = mat;
+        }
     }
 }
