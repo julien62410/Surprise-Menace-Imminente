@@ -2,7 +2,6 @@
 
 public class ImminentDanger : MonoBehaviour
 {
-<<<<<<< HEAD
 
     public GlitchEffect effect;
     public float radius, batteryUsage;
@@ -10,8 +9,6 @@ public class ImminentDanger : MonoBehaviour
     [HideInInspector]
     public float battery;
 
-=======
->>>>>>> 1a6cf45db2614ecd1c8877e390ce6bcbea0a5c16
     private float ratio;
 
     void Start()

@@ -7,8 +7,6 @@ public class VariableManager : MonoBehaviour
     [Header("Glitch")]
     public float radiusGlitchAndSound;
     public GlitchEffect scriptGlitchEffect;
-    public Texture2D ennemyMaterial;
-    public Shader glitchShader;
 
     [Header("Audio")]
     public float delayBetweenSoundFantome;
