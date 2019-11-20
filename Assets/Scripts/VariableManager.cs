@@ -27,8 +27,11 @@ public class VariableManager : MonoBehaviour
     [Header("Camera")]
     public Camera arCamera;
 
-    [Header("Battery")]
+    [Header("Player")]
     public float batteryUsage;
+    public float battery;
+    public int score;
+    public int lifePlayer;
 
     public static VariableManager variableManager = null;
     

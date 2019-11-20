@@ -45,13 +45,12 @@ public class EnnemySpawn : MonoBehaviour
 
             if (_ennemy != null)
             {
-                Debug.Log("test");
                 _ennemy.SetActive(true);
                 _ennemy.GetComponent<DamageBehaviour>().dead = false;
                 EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
                 int _rotation = Random.Range(0, 361);
-                _ennemyControl.transform.position = new Vector3(VariableManager.variableManager.enemySpawnDistance, 0, 0);
-                _ennemyControl.transform.LookAt(VariableManager.variableManager.arCamera.transform);
+                _ennemyControl.ennemyObject.transform.position = new Vector3(VariableManager.variableManager.enemySpawnDistance, 0, 0);
+                _ennemyControl.ennemyObject.transform.LookAt(VariableManager.variableManager.arCamera.transform);
                 _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
             } else
             {

@@ -27,7 +27,7 @@ public class DamageBehaviour : MonoBehaviour
         }
         dead = false;
         timer = 0f;
-        col = GetComponent<Collider>();
+        col = GetComponent<EnnemyControl>().ennemyObject.GetComponent<BoxCollider>();
         danger = Camera.main.GetComponent<ImminentDanger>();
     }
 
@@ -68,6 +68,7 @@ public class DamageBehaviour : MonoBehaviour
 
     private void TriggerDeath()
     {
+        VariableManager.variableManager.score++;
         if(visuals) visuals.DeathFeedback();
         EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
     }
