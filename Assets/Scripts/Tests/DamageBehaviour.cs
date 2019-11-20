@@ -28,7 +28,7 @@ public class DamageBehaviour : MonoBehaviour
     void Start()
     {
         timer = 0f;
-        col = this.GetComponent<EnnemyControl>().ennemy.GetComponent<Collider>();
+        col = GetComponent<Collider>();
         danger = Camera.main.GetComponent<ImminentDanger>();
     }
 
@@ -46,7 +46,6 @@ public class DamageBehaviour : MonoBehaviour
         if (danger.battery > 0 && timer >= damageDelay && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
         {
             hp--;
-            Debug.Log(hp);
             timer = 0f;
         }
 

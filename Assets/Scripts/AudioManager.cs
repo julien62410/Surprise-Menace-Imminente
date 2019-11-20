@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= delay)
         {
-            if (source.volume >= 0.1f)
+            if (source.volume >= 0f)
             {
                 source.Play();
                 timer = 0f;
