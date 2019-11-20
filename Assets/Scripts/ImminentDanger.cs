@@ -2,6 +2,7 @@
 
 public class ImminentDanger : MonoBehaviour
 {
+<<<<<<< HEAD
 
     public GlitchEffect effect;
     public float radius, batteryUsage;
@@ -9,6 +10,8 @@ public class ImminentDanger : MonoBehaviour
     [HideInInspector]
     public float battery;
 
+=======
+>>>>>>> 1a6cf45db2614ecd1c8877e390ce6bcbea0a5c16
     private float ratio;
 
     void Start()
@@ -21,7 +24,7 @@ public class ImminentDanger : MonoBehaviour
     {
         battery = Mathf.Max(0, battery - batteryUsage * Time.deltaTime);
         ratio = 1f;
-        Collider[] overlaped = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Enemy"));
+        Collider[] overlaped = Physics.OverlapSphere(transform.position, VariableManager.variableManager.radiusGlitchAndSound, LayerMask.GetMask("Enemy"));
         foreach(Collider enemy in overlaped)
         {
             AudioSource audio = enemy.GetComponent<AudioSource>();
@@ -35,8 +38,8 @@ public class ImminentDanger : MonoBehaviour
                 audio.volume = 1f - magnitude;
             }
         }
-        effect.intensity = 1 - ratio;
-        effect.flipIntensity = 1 - ratio;
-        effect.colorIntensity = 1 - ratio;
+        VariableManager.variableManager.scriptGlitchEffect.intensity = 1 - ratio;
+        VariableManager.variableManager.scriptGlitchEffect.flipIntensity = 1 - ratio;
+        VariableManager.variableManager.scriptGlitchEffect.colorIntensity = 1 - ratio;
     }
 }

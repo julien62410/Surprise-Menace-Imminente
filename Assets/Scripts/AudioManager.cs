@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
-    public float delay;
-
     private AudioSource source;
     private float timer;
 
@@ -21,7 +18,7 @@ public class AudioManager : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= delay)
+        if (timer >= VariableManager.variableManager.delayBetweenSoundFantome)
         {
             if (source.volume >= 0f)
             {
