@@ -537,5 +537,15 @@ PrefabInstance:
       propertyPath: enemyPool
       value: 
       objectReference: {fileID: 845886830}
+    - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: radiusGlitchAndSound
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: delayBetweenSoundFantome
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29104b68b789ada40b59e41a9d75859c, type: 3}

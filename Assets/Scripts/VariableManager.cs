@@ -5,10 +5,11 @@ using UnityEngine;
 public class VariableManager : MonoBehaviour
 {
     [Header("Glitch")]
-    public float radiusGlitchAndSound;
+    public float radiusGlitch;
     public GlitchEffect scriptGlitchEffect;
 
     [Header("Audio")]
+    public float radiusAudio;
     public float delayBetweenSoundFantome;
 
     [Header("Enemy Object")]

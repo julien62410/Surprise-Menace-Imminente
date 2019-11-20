@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4294017aa79b3004dbdff4d5f96e4b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radiusGlitchAndSound: 10
+  radiusGlitch: 0
   scriptGlitchEffect: {fileID: 0}
+  radiusAudio: 0
   delayBetweenSoundFantome: 4
   enemyPrefab: {fileID: 580846738752140957, guid: 7ddbe0cb835d65e4aafb22fc9a73fdaf,
     type: 3}
