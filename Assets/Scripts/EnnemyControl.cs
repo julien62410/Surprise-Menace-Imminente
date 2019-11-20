@@ -3,20 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnnemyControl : MonoBehaviour
-{
-    public GameObject player;
-    public GameObject ennemy;
-
-    public float speed;
-    public float distanceToHit = 1;
-
+{ 
     private EnemyVisuals visuals;
 
     private void Start()
     {
-        player = EnnemySpawn.Instance.arCamera.gameObject;
-        speed = EnnemySpawn.Instance.speed;
-        distanceToHit = EnnemySpawn.Instance.distanceToHit;
         visuals = GetComponentInChildren<EnemyVisuals>();
         if (visuals) visuals.onDeathFeedbackPlayed += DeactivateGameObject;
     }
@@ -32,15 +23,15 @@ public class EnnemyControl : MonoBehaviour
 
     private void MoveEnnemy()
     {
-        float _step = speed * Time.deltaTime;
-        ennemy.transform.position = Vector3.MoveTowards(ennemy.transform.position, player.transform.position, _step);
+        float _step = VariableManager.variableManager.enemySpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, VariableManager.variableManager.arCamera.gameObject.transform.position, _step);
     }
 
     private void DistanceWithPlayer()
     {
-        float _distance = Vector3.Distance(ennemy.transform.position, player.transform.position);
+        float _distance = Vector3.Distance(transform.position, VariableManager.variableManager.arCamera.gameObject.transform.position);
 
-        if (_distance < distanceToHit)
+        if (_distance < VariableManager.variableManager.distBetweenEnemyAndPlayerToDamagePlayer)
         {
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
         }
