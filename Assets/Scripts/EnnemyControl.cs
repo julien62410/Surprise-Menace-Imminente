@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnnemyControl : MonoBehaviour
 {
@@ -36,6 +37,15 @@ public class EnnemyControl : MonoBehaviour
         {
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
             DesactivateGameObject();
+            VariableManager.variableManager.lifePlayer--;
+
+            if (VariableManager.variableManager.lifePlayer == 0)
+            {
+                if (!PlayerPrefs.HasKey("highScores") || VariableManager.variableManager.score > PlayerPrefs.GetInt("highScores"))
+                    PlayerPrefs.SetInt("highScores", VariableManager.variableManager.score);
+
+                SceneManager.LoadScene("Menu");
+            }
         }
     }
 
