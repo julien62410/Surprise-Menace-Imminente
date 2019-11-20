@@ -307,6 +307,86 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
+      value: -1.4285715
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
+      value: -1.4285715
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].inSlope
+      value: -0.13643411
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].outSlope
+      value: -0.13643411
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[2].inWeight
+      value: 0.26186895
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
+      value: 0.036114514
+      objectReference: {fileID: 0}
+    - target: {fileID: 6336875848428776077, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].value
+      value: 0.97441864
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 123a5de1c15e7b942b0e943d91119361, type: 3}
 --- !u!1 &845886830 stripped
@@ -541,11 +621,6 @@ PrefabInstance:
         type: 3}
       propertyPath: radiusGlitchAndSound
       value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
-        type: 3}
-      propertyPath: delayBetweenSoundFantome
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29104b68b789ada40b59e41a9d75859c, type: 3}

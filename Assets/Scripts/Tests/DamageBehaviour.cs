@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DamageBehaviour : MonoBehaviour
 {
+    public AudioSource sound;
+
     private int hp;
 
     [HideInInspector]
@@ -34,6 +36,7 @@ public class DamageBehaviour : MonoBehaviour
     private void OnEnable()
     {
         hp = hpSave;
+        StartCoroutine(PlaySound());
     }
 
     void Update()
@@ -69,8 +72,18 @@ public class DamageBehaviour : MonoBehaviour
     private void TriggerDeath()
     {
         VariableManager.variableManager.score++;
-        if(visuals) visuals.DeathFeedback();
+        if (sound)
+        {
+            StopAllCoroutines();
+            sound.Stop();
+        }
+        if (visuals) visuals.DeathFeedback();
         EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
     }
 
+    IEnumerator PlaySound()
+    {
+        yield return new WaitForSeconds(1.2f);
+        if (sound) sound.Play();
+    }
 }

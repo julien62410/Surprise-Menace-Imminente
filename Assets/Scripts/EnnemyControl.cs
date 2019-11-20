@@ -27,6 +27,8 @@ public class EnnemyControl : MonoBehaviour
     {
         float _step = VariableManager.variableManager.enemySpeed * Time.deltaTime;
         ennemyObject.transform.position = Vector3.MoveTowards(ennemyObject.transform.position, VariableManager.variableManager.arCamera.gameObject.transform.position, _step);
+
+        ennemyObject.transform.LookAt(VariableManager.variableManager.arCamera.transform);
     }
 
     private void DistanceWithPlayer()
