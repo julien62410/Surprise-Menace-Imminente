@@ -10,6 +10,7 @@ public class EnnemySpawn : MonoBehaviour
     public int ennemyCountPerSpawn = 1;
 
     private List<GameObject> ennemyPoolList = new List<GameObject>();
+    private float timer;
 
     private void Awake()
     {
@@ -25,8 +26,19 @@ public class EnnemySpawn : MonoBehaviour
 
     private void Start()
     {
+        timer = 0f;
         InitPoolList();
         SpawnEnnemy();
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if(timer>= 5 - 4 * VariableManager.variableManager.difficulty)
+        {
+            timer = 0f;
+            SpawnEnnemy();
+        }
     }
 
     private void InitPoolList()
@@ -55,6 +67,7 @@ public class EnnemySpawn : MonoBehaviour
                     _ennemy.transform.position.z);
                 _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
                 _ennemy.SetActive(true);
+                _ennemy.GetComponentInChildren<AudioSource>().Play();
             } else
             {
                 Debug.LogWarning("Pool entièrement utilisé");
@@ -76,6 +89,6 @@ public class EnnemySpawn : MonoBehaviour
 
     public void CollisionWithPlayer(GameObject ennemy)
     {
-        SpawnEnnemy(ennemyCountPerSpawn);
+        //SpawnEnnemy(ennemyCountPerSpawn);
     }
 }

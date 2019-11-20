@@ -5,15 +5,15 @@ using UnityEngine;
 public class VariableManager : MonoBehaviour
 {
     [Header("Glitch")]
-    public float radiusGlitchAndSound;
+    public float radiusGlitch;
     public GlitchEffect scriptGlitchEffect;
-
-    [Header("Audio")]
-    public float delayBetweenSoundFantome;
 
     [Header("Enemy Object")]
     public GameObject enemyPrefab;
     public GameObject enemyPool;
+
+    [HideInInspector]
+    public float difficulty;
 
     [Header("Enemy Stats")]
     public int lifeEnemy;
@@ -38,9 +38,17 @@ public class VariableManager : MonoBehaviour
     private void Awake()
     {
         if (variableManager == null)
+        {
             variableManager = this;
+            difficulty = 0;
+        }
         else if (variableManager != this)
             Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        difficulty = Mathf.Min(1, (float)score / 100.0f);
     }
 
 }
