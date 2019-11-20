@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 89bc2b27a15a0c94990c531617260bac, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -71,12 +71,16 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PulseFrequency: 2.89
-    - _PulseSpeed: 1
+    - _PulseFrequency: 0.5
+    - _PulseRemap: 2
+    - _PulseSmooth: 1
+    - _PulseSpeed: -1.2
+    - _PulseWidth: 0.2
     - _ShadowSmoothness: 0.902
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StepSparkle: 0.2
     - _UVSec: 0
     - _WiggleFreq: 121.48
     - _WiggleMax: 0.38
@@ -85,10 +89,11 @@ Material:
     - _WiggleStrength: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.8292476, b: 0.3066038, a: 1}
+    - _Color: {r: 0.6509434, g: 0.27161667, b: 0, a: 1}
     - _ColorA: {r: 1, g: 0.7515495, b: 0.3726415, a: 1}
     - _ColorB: {r: 0.9245283, g: 0.45374385, b: 0.22241008, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.5283019, g: 0.19994497, b: 0.072267726, a: 1}
+    - _FresnelColor: {r: 0.8018868, g: 0.38338342, b: 0.15508187, a: 1}
     - _LightDir: {r: -50, g: 454.65, b: -49.17, a: 0}
     - _ShadowColor: {r: 0.5754717, g: 0.4750356, b: 0.51433057, a: 1}
+    - _SparkleColor: {r: 0.9056604, g: 0.6805451, b: 0.16660735, a: 1}
