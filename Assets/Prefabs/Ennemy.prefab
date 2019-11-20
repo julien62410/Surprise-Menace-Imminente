@@ -169,12 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e461118e09294be44b2370b47814efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   hp: 3
   damageDelay: 1
-=======
-  col2d: {fileID: 4012060798518525692}
->>>>>>> 1a6cf45db2614ecd1c8877e390ce6bcbea0a5c16
   visuals: {fileID: 3161701625218871876}
 --- !u!114 &5339926757544137000
 MonoBehaviour:

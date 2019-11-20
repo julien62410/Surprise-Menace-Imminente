@@ -46,7 +46,7 @@ public class EnnemySpawn : MonoBehaviour
             if (_ennemy != null)
             {
                 _ennemy.SetActive(true);
-                _ennemy.GetComponentInChildren<DamageBehaviour>().dead = false;
+                _ennemy.GetComponent<DamageBehaviour>().dead = false;
                 EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
                 int _rotation = Random.Range(0, 361);
                 _ennemyControl.transform.position = new Vector3(VariableManager.variableManager.enemySpawnDistance, 0, 0);
