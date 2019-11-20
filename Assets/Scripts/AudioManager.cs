@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        source = GetComponent<AudioSource>();
+        source = GetComponent<EnnemyControl>().ennemyObject.GetComponent<AudioSource>();
         timer = 0f;
     }
 

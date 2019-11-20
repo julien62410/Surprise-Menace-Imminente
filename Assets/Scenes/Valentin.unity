@@ -434,6 +434,21 @@ PrefabInstance:
       propertyPath: enemyPool
       value: 
       objectReference: {fileID: 1355331948}
+    - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: lifeEnemy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: enemySpawnDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: distBetweenEnemyAndPlayerToDamagePlayer
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29104b68b789ada40b59e41a9d75859c, type: 3}
 --- !u!1001 &1277054357
@@ -709,6 +724,21 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.5087665
       objectReference: {fileID: 0}
+    - target: {fileID: 4818510670173423964, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.40000042
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818510670173423964, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.39999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818510670173423964, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4000004
+      objectReference: {fileID: 0}
     - target: {fileID: 8492998303481983415, guid: 123a5de1c15e7b942b0e943d91119361,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -729,5 +759,136 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: -0.013246633
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8492998303481983415, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492998303481983415, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.40000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492998303481983415, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.40000048
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344607606364, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344681145489, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344694884277, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344480594162, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344296683971, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344145721896, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344020293735, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166343897605653, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166343904052610, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166343717463068, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345675574251, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345586473507, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345408544582, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345370410803, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345195200325, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345249742615, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345256197406, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166345262480664, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344923448832, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344923448832, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344778495044, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979166344830014627, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: m_Name
+      value: EnnemyCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501912393191244505, guid: 123a5de1c15e7b942b0e943d91119361,
+        type: 3}
+      propertyPath: explosionProgress
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 620080265677409889, guid: 123a5de1c15e7b942b0e943d91119361, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 123a5de1c15e7b942b0e943d91119361, type: 3}
