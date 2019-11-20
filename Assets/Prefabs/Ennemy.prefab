@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   col2d: {fileID: 4012060798518525692}
+  visuals: {fileID: 3161701625218871876}
 --- !u!114 &5339926757544137000
 MonoBehaviour:
   m_ObjectHideFlags: 0

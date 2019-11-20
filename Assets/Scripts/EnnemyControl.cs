@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnnemyControl : MonoBehaviour
+{ 
     private EnemyVisuals visuals;
+
     private void Start()
     {
         visuals = GetComponentInChildren<EnemyVisuals>();
         if (visuals) visuals.onDeathFeedbackPlayed += DeactivateGameObject;
     }
+
     private void Update()
     {
         if (this.gameObject.activeInHierarchy)

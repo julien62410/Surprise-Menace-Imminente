@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class DamageBehaviour : MonoBehaviour
 {
-    private int hp;
     public Collider col2d;
+
     [SerializeField] private EnemyVisuals visuals;
+    private int hp;
     private float timer;
     private int hpSave;
     private bool isInit = false;
