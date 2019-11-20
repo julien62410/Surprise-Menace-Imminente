@@ -43,7 +43,6 @@ public class DamageBehaviour : MonoBehaviour
         if (timer >= damageDelay && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
         {
             hp--;
-            Debug.Log(hp);
             timer = 0f;
         }
 
