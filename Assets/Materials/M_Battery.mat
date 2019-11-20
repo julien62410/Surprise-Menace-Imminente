@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Battery
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: a5972527f105db2448ab90b3aa86bb42, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,8 +40,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 89bc2b27a15a0c94990c531617260bac, type: 3}
+        m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -56,6 +56,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _ArmDistort: 0.2
+    - _ArmExponent: 1.5
+    - _ArmStep: 0.5
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -63,15 +66,29 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _Gonfle: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _PulseFrequency: 2.89
+    - _PulseSpeed: 1
+    - _ShadowSmoothness: 0.902
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WiggleFreq: 121.48
+    - _WiggleMax: 0.38
+    - _WiggleMin: -6.32
+    - _WiggleSpeed: 0
+    - _WiggleStrength: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.5934721, b: 0.43921566, a: 1}
+    - _Color: {r: 1, g: 0.8292476, b: 0.3066038, a: 1}
+    - _ColorA: {r: 1, g: 0.7515495, b: 0.3726415, a: 1}
+    - _ColorB: {r: 0.9245283, g: 0.45374385, b: 0.22241008, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FresnelColor: {r: 0.5283019, g: 0.19994497, b: 0.072267726, a: 1}
+    - _LightDir: {r: -50, g: 454.65, b: -49.17, a: 0}
+    - _ShadowColor: {r: 0.5754717, g: 0.4750356, b: 0.51433057, a: 1}
