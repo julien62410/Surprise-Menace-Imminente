@@ -79,9 +79,6 @@ public class EnnemySpawn : MonoBehaviour
 
     public void CollisionWithPlayer(GameObject ennemy)
     {
-        ennemy.SetActive(false);
         SpawnEnnemy(ennemyCountPerSpawn);
     }
-
-
 }
