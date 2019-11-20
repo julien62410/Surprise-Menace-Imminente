@@ -34,6 +34,7 @@ public class EnnemyControl : MonoBehaviour
         if (_distance < VariableManager.variableManager.distBetweenEnemyAndPlayerToDamagePlayer)
         {
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
+            DeactivateGameObject();
         }
     }
 

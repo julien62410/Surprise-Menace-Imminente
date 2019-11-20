@@ -45,6 +45,7 @@ public class EnnemySpawn : MonoBehaviour
 
             if (_ennemy != null)
             {
+                Debug.Log("test");
                 _ennemy.SetActive(true);
                 _ennemy.GetComponent<DamageBehaviour>().dead = false;
                 EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
