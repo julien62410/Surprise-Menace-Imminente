@@ -45,16 +45,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radiusGlitchAndSound: 10
   scriptGlitchEffect: {fileID: 0}
-  ennemyMaterial: {fileID: 2800000, guid: f967fe4e347230846a349ea2ea1147ae, type: 3}
-  glitchShader: {fileID: 4800000, guid: 241cb693a0707f44eb1d5902c65b0ed7, type: 3}
-  soundFantome: {fileID: 8300000, guid: 279b5215acf794f49b9a5c20fd1b6fc9, type: 3}
   delayBetweenSoundFantome: 4
   enemyPrefab: {fileID: 580846738752140957, guid: 7ddbe0cb835d65e4aafb22fc9a73fdaf,
     type: 3}
   enemyPool: {fileID: 0}
-  lifeEnemy: 500
-  enemySpawnDistance: 2
-  enemySpeed: 0.1
+  lifeEnemy: 100
+  enemySpawnDistance: 4
+  enemySpeed: 0.3
   secondPerOneDamage: 0.01
-  distBetweenEnemyAndPlayerToDamagePlayer: 0.1
+  distBetweenEnemyAndPlayerToDamagePlayer: 0.3
   arCamera: {fileID: 0}
+  batteryUsage: 1
+  battery: 100
+  score: 0
+  lifePlayer: 5

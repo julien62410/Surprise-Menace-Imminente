@@ -68,6 +68,7 @@ public class DamageBehaviour : MonoBehaviour
 
     private void TriggerDeath()
     {
+        VariableManager.variableManager.score++;
         if(visuals) visuals.DeathFeedback();
         EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
     }
