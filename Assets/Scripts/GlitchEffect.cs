@@ -16,8 +16,6 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class GlitchEffect : MonoBehaviour
 {
-	public Texture2D displacementMap;
-	public Shader Shader;
 	[Header("Glitch Intensity")]
 
 	[Range(0, 1)]
@@ -39,7 +37,7 @@ public class GlitchEffect : MonoBehaviour
 
 	void Start()
 	{
-		_material = new Material(Shader);
+		_material = new Material(VariableManager.variableManager.glitchShader);
 	}
 
 	// Called by camera to apply image effect
@@ -47,7 +45,7 @@ public class GlitchEffect : MonoBehaviour
 	{
 		_material.SetFloat("_Intensity", intensity);
 		_material.SetFloat("_ColorIntensity", colorIntensity);
-		_material.SetTexture("_DispTex", displacementMap);
+		_material.SetTexture("_DispTex", VariableManager.variableManager.ennemyMaterial);
 
 		flicker += Time.deltaTime * colorIntensity;
 		if (flicker > _flickerTime)

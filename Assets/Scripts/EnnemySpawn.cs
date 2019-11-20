@@ -7,13 +7,6 @@ public class EnnemySpawn : MonoBehaviour
     private static EnnemySpawn _instance;
     public static EnnemySpawn Instance { get { return _instance; } }
 
-    public GameObject ennemy;
-    public GameObject ennemyPool;
-    public Camera arCamera;
-
-    public float spawnDistance;
-    public float speed;
-    public float distanceToHit;
     public int ennemyCountPerSpawn = 1;
 
     private List<GameObject> ennemyPoolList = new List<GameObject>();
@@ -38,7 +31,7 @@ public class EnnemySpawn : MonoBehaviour
 
     private void InitPoolList()
     {
-        foreach (Transform tsf in ennemyPool.transform)
+        foreach (Transform tsf in VariableManager.variableManager.enemyPool.transform)
         {
             ennemyPoolList.Add(tsf.gameObject);
         }
@@ -55,8 +48,8 @@ public class EnnemySpawn : MonoBehaviour
                 _ennemy.SetActive(true);
                 EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
                 int _rotation = Random.Range(0, 361);
-                _ennemyControl.ennemy.transform.position = new Vector3(spawnDistance, 0, 0);
-                _ennemyControl.ennemy.transform.LookAt(arCamera.transform);
+                _ennemyControl.transform.position = new Vector3(VariableManager.variableManager.enemySpawnDistance, 0, 0);
+                _ennemyControl.transform.LookAt(VariableManager.variableManager.arCamera.transform);
                 _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
             } else
             {

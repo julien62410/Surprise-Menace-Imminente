@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class DamageBehaviour : MonoBehaviour
 {
-
-    public int hp;
-    public float damageDelay;
     public Collider col2d;
 
+    private int hp;
     private float timer;
     private int hpSave;
     private bool isInit = false;
@@ -18,6 +16,7 @@ public class DamageBehaviour : MonoBehaviour
     {
         if (!isInit)
         {
+            hp = VariableManager.variableManager.lifeEnemy;
             hpSave = hp;
             isInit = true;
         }
@@ -40,7 +39,7 @@ public class DamageBehaviour : MonoBehaviour
 
         Vector3 center = Camera.main.WorldToViewportPoint(col2d.bounds.center);
 
-        if (timer >= damageDelay && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+        if (timer >= VariableManager.variableManager.delayBetweenSoundFantome && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
         {
             hp--;
             timer = 0f;
