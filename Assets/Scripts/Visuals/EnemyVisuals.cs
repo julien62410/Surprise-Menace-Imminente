@@ -63,6 +63,12 @@ public class EnemyVisuals : MonoBehaviour
         animator.SetBool("damaged", false);
     }
 
+    public void SetExplosionProgress(int hpMax, int currentHp)
+    {
+        float normalized = Mathf.InverseLerp(0, hpMax, currentHp);
+        explosionProgress = normalized;
+    }
+
     private void UpdateInitialScales()
     {
         if (toScale.Length != initialScales.Count)
