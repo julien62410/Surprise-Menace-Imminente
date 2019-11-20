@@ -31,7 +31,7 @@ public class EnemyVisuals : MonoBehaviour
     [SerializeField] private GameObject[] toDeactivate;
 
     public delegate void VisualEvent();
-    public VisualEvent deathFeedbackPlayed;
+    public VisualEvent onDeathFeedbackPlayed;
 
     private void OnEnable()
     {
@@ -61,6 +61,12 @@ public class EnemyVisuals : MonoBehaviour
     public void IdleAnim()
     {
         animator.SetBool("damaged", false);
+    }
+
+    public void SetExplosionProgress(int hpMax, int currentHp)
+    {
+        float normalized = Mathf.InverseLerp(0, hpMax, currentHp);
+        explosionProgress = 1 - normalized;
     }
 
     private void UpdateInitialScales()
@@ -107,7 +113,7 @@ public class EnemyVisuals : MonoBehaviour
 
     private IEnumerator DeactivatingGameObject()
     {
-        yield return new WaitForSeconds(1f);
-        deathFeedbackPlayed.Invoke();
+        yield return new WaitForSeconds(2f);
+        onDeathFeedbackPlayed.Invoke();
     }
 }

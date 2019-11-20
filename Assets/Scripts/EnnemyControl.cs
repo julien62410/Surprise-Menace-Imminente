@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnnemyControl : MonoBehaviour
-{    private void Update()
+    private EnemyVisuals visuals;
+    private void Start()
+    {
+        visuals = GetComponentInChildren<EnemyVisuals>();
+        if (visuals) visuals.onDeathFeedbackPlayed += DeactivateGameObject;
+    }
+    private void Update()
     {
         if (this.gameObject.activeInHierarchy)
         {
@@ -27,4 +33,11 @@ public class EnnemyControl : MonoBehaviour
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
         }
     }
+
+    private void DeactivateGameObject()
+    {
+        gameObject.SetActive(false);
+    }
 }
+
+
