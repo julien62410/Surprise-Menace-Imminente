@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DamageBehaviour : MonoBehaviour
 {
-
-    public int hp;
+    private int hp;
 
     [HideInInspector]
     public bool dead;

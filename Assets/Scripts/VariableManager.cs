@@ -27,6 +27,9 @@ public class VariableManager : MonoBehaviour
     [Header("Camera")]
     public Camera arCamera;
 
+    [Header("Battery")]
+    public float batteryUsage;
+
     public static VariableManager variableManager = null;
     
     private void Awake()
