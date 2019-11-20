@@ -6,19 +6,23 @@ public class ImminentDanger : MonoBehaviour
 {
 
     public GlitchEffect effect;
-    public float radius;
+    public float radius, batteryUsage;
+
+    [HideInInspector]
+    public float battery;
 
     private float ratio;
 
     // Start is called before the first frame update
     void Start()
     {
-        ratio = 1;
+        battery = 100f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        battery = Mathf.Min(0, battery - batteryUsage * Time.deltaTime);
         ratio = 1f;
         Collider[] overlaped = Physics.OverlapSphere(transform.position, radius, LayerMask.GetMask("Enemy"));
         foreach(Collider c in overlaped)

@@ -8,10 +8,11 @@ public class DamageBehaviour : MonoBehaviour
     public int hp;
     public float damageDelay;
 
-    private Collider col2d;
+    private Collider col;
     private float timer;
     private int hpSave;
     private bool isInit = false;
+    private ImminentDanger danger;
 
 
     private void Awake()
@@ -27,7 +28,8 @@ public class DamageBehaviour : MonoBehaviour
     void Start()
     {
         timer = 0f;
-        col2d = this.GetComponent<EnnemyControl>().ennemy.GetComponent<Collider>();
+        col = this.GetComponent<EnnemyControl>().ennemy.GetComponent<Collider>();
+        danger = Camera.main.GetComponent<ImminentDanger>();
     }
 
     private void OnEnable()
@@ -39,9 +41,9 @@ public class DamageBehaviour : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        Vector3 center = Camera.main.WorldToViewportPoint(col2d.bounds.center);
+        Vector3 center = Camera.main.WorldToViewportPoint(col.bounds.center);
 
-        if (timer >= damageDelay && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+        if (danger.battery > 0 && timer >= damageDelay && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
         {
             hp--;
             Debug.Log(hp);
