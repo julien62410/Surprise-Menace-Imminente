@@ -92,7 +92,7 @@
 				float sparkle = (1 -mask) * col.r;
 
 				float maskSparkle = step(sparkle, _StepSparkle) * (1 -step(mask, 0)) * mask;
-				fixed4 fresn = fresnel(normalize(i.normal), normalize(i.viewDir), lerp(1, 2, (sin(_Time.y * 40) + 1) / 2)) * _FresnelColor;
+				fixed4 fresn = fresnel(normalize(i.normal), normalize(i.viewDir), lerp(1, 2, (sin(_Time.y * 7) + 1) / 2)) * _FresnelColor;
 
 				col = lerp(_Color, _SparkleColor, maskSparkle);
 				col += fresn;
