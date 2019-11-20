@@ -45,13 +45,16 @@ public class EnnemySpawn : MonoBehaviour
 
             if (_ennemy != null)
             {
-                _ennemy.SetActive(true);
-                _ennemy.GetComponent<DamageBehaviour>().dead = false;
                 EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
                 int _rotation = Random.Range(0, 361);
-                _ennemyControl.ennemyObject.transform.position = new Vector3(VariableManager.variableManager.enemySpawnDistance, 0, 0);
-                _ennemyControl.ennemyObject.transform.LookAt(VariableManager.variableManager.arCamera.transform);
+
+                _ennemy.transform.position = VariableManager.variableManager.arCamera.transform.position;
+                _ennemy.GetComponent<DamageBehaviour>().dead = false;
+                _ennemyControl.ennemyObject.transform.position = new Vector3(_ennemy.transform.position.x + VariableManager.variableManager.enemySpawnDistance, 
+                    _ennemy.transform.position.y, 
+                    _ennemy.transform.position.z);
                 _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
+                _ennemy.SetActive(true);
             } else
             {
                 Debug.LogWarning("Pool entièrement utilisé");
