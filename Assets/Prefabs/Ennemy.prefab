@@ -252,9 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e461118e09294be44b2370b47814efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 3
   damageDelay: 1
-  col2d: {fileID: 8382502255753005392}
+  visuals: {fileID: 3161701625218871876}
 --- !u!114 &4045101308591623390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,3 +398,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5905617137634553382}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3161701625218871876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8796772104400313442, guid: 3d1db97839ca36440a9e2e84c4d4546b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5905617137634553382}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7c5123ba7dfd14b9555510fffc979a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

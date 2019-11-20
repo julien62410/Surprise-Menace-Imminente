@@ -10,11 +10,15 @@ public class EnnemyControl : MonoBehaviour
     public float speed;
     public float distanceToHit = 1;
 
+    private EnemyVisuals visuals;
+
     private void Start()
     {
         player = EnnemySpawn.Instance.arCamera.gameObject;
         speed = EnnemySpawn.Instance.speed;
         distanceToHit = EnnemySpawn.Instance.distanceToHit;
+        visuals = GetComponentInChildren<EnemyVisuals>();
+        if (visuals) visuals.onDeathFeedbackPlayed += DeactivateGameObject;
     }
 
     private void Update()
@@ -41,4 +45,11 @@ public class EnnemyControl : MonoBehaviour
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
         }
     }
+
+    private void DeactivateGameObject()
+    {
+        gameObject.SetActive(false);
+    }
 }
+
+

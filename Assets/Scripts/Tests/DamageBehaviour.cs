@@ -8,7 +8,13 @@ public class DamageBehaviour : MonoBehaviour
     public int hp;
     public float damageDelay;
 
+    [HideInInspector]
+    public bool dead;
+
     private Collider col;
+
+    [SerializeField] private EnemyVisuals visuals;
+
     private float timer;
     private int hpSave;
     private bool isInit = false;
@@ -27,6 +33,7 @@ public class DamageBehaviour : MonoBehaviour
 
     void Start()
     {
+        dead = false;
         timer = 0f;
         col = GetComponent<Collider>();
         danger = Camera.main.GetComponent<ImminentDanger>();
@@ -47,16 +54,29 @@ public class DamageBehaviour : MonoBehaviour
         {
             hp--;
             timer = 0f;
+            if (visuals) visuals.DamageAnim();
         }
 
-        if (hp <= 0)
+        if (!dead && hp <= 0)
         {
+            dead = true;
             TriggerDeath();
+        }
+
+        UpdateVisuals();
+    }
+
+    private void UpdateVisuals()
+    {
+        if(visuals)
+        {
+            visuals.SetExplosionProgress(hpSave, hp);
         }
     }
 
     private void TriggerDeath()
     {
+        if(visuals) visuals.DeathFeedback();
         EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
     }
 
