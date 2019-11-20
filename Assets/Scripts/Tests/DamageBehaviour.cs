@@ -6,7 +6,6 @@ public class DamageBehaviour : MonoBehaviour
 {
 
     public int hp;
-    public float damageDelay;
 
     [HideInInspector]
     public bool dead;
@@ -44,7 +43,7 @@ public class DamageBehaviour : MonoBehaviour
 
         Vector3 center = Camera.main.WorldToViewportPoint(col.bounds.center);
 
-        if (danger.battery > 0 && timer >= VariableManager.variableManager.delayBetweenSoundFantome && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+        if (danger.battery > 0 && timer >= VariableManager.variableManager.secondPerOneDamage && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
         {
             hp--;
             timer = 0f;
