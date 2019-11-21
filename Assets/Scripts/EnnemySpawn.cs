@@ -125,6 +125,7 @@ public class EnnemySpawn : MonoBehaviour
         if(ennemy.layer == LayerMask.NameToLayer("Battery"))
         {
             VariableManager.variableManager.battery = 100f;
+            BatteryUI.Instance.Earn();
             ennemy.GetComponentInChildren<BatteryVisuals>().Pickup();
 
         }

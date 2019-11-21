@@ -37,17 +37,19 @@ public class ImageFill : MonoBehaviour
 
     private void UpdateFill()
     {
-        if(rightImage && leftImage && fillImage)
+        if(fillImage)
         {
             float smoothFill = Mathf.SmoothDamp(fillImage.fillAmount, targetFill, ref currentVelFill, fillSmoothness);
             fillImage.fillAmount = smoothFill;
 
-            rightImage.transform.position = Vector3.Lerp(leftImage.transform.position, initialRightPos, smoothFill);
 
             for (int i = 0; i < fillImages.Length; i++)
             {
                 fillImages[i].fillAmount = smoothFill;
             }
+
+            if(rightImage && leftImage)
+                rightImage.transform.position = Vector3.Lerp(leftImage.transform.position, initialRightPos, smoothFill);
         }
     }
 }
