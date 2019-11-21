@@ -6,20 +6,21 @@ using UnityEngine.UI;
 public class DamageFilter : MonoBehaviour
 {
 
-    public Image top, left, bottom, right;
+    public Animator top, left, bottom, right;
     public float fadeSpeed;
 
     private Coroutine TT, TL, TB, TR;
     private float maxA;
 
+
     // Start is called before the first frame update
     void Start()
     {
-        maxA = 0;
-        top.color = new Color(1, 1, 1, 0);
-        left.color = new Color(1, 1, 1, 0);
-        bottom.color = new Color(1, 1, 1, 0);
-        right.color = new Color(1, 1, 1, 0);
+        //maxA = 0;
+        //top.color = new Color(1, 1, 1, 0);
+        //left.color = new Color(1, 1, 1, 0);
+        //bottom.color = new Color(1, 1, 1, 0);
+        //right.color = new Color(1, 1, 1, 0);
     }
 
     // Update is called once per frame
@@ -37,32 +38,38 @@ public class DamageFilter : MonoBehaviour
                 {
                     StopCoroutine(TT);
                 }
-                TT = StartCoroutine(TriggerTop());
+                //TT = StartCoroutine(TriggerTop());
+
+                top.SetTrigger("In");
                 break;
             case 1:
                 if (TL != null)
                 {
                     StopCoroutine(TL);
                 }
-                TL = StartCoroutine(TriggerLeft());
+                left.SetTrigger("In");
+                //TL = StartCoroutine(TriggerLeft());
                 break;
             case 2:
                 if (TB != null)
                 {
                     StopCoroutine(TB);
                 }
-                TB = StartCoroutine(TriggerBottom());
+                bottom.SetTrigger("In");
+                //TB = StartCoroutine(TriggerBottom());
                 break;
             case 3:
                 if (TR != null)
                 {
                     StopCoroutine(TR);
                 }
-                TR = StartCoroutine(TriggerRight());
+                right.SetTrigger("In");
+                //TR = StartCoroutine(TriggerRight());
                 break;
         }
     }
 
+    /*
     IEnumerator TriggerTop()
     {
 
@@ -137,5 +144,5 @@ public class DamageFilter : MonoBehaviour
             yield return 0;
         }
 
-    }
+    }*/
 }
