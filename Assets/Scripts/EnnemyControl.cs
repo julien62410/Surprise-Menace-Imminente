@@ -46,6 +46,8 @@ public class EnnemyControl : MonoBehaviour
                 if (!PlayerPrefs.HasKey("highScores") || VariableManager.variableManager.score > PlayerPrefs.GetInt("highScores"))
                     PlayerPrefs.SetInt("highScores", VariableManager.variableManager.score);
 
+                PlayerPrefs.SetInt("lastScore", VariableManager.variableManager.score);
+
                 SceneManager.LoadScene("Menu");
             }
         }

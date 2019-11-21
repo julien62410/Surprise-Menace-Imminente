@@ -15,6 +15,10 @@
 		_Color("Color", Color) = (1,1,1,1)
 		_SparkleColor("Sparkle Color", Color) = (1,1,1,1)
 		_FresnelColor("Fresnel Color", Color) = (1,1,1,1)
+
+		_ShadowColor("Shadow Color", Color) = (0,0,0,0)
+		_ShadowSmoothness("Shadow Smoothness", Range(0,1)) = 0.5
+		_LightDir("LightDir", Vector) =(0,0,0,0)
     }
     SubShader
     {
@@ -45,6 +49,7 @@
                 float4 vertex : SV_POSITION;
 				float3 position : POSITION1;
 				float3 viewDir : TEXCOORD1;
+				float3 worldNormal : TEXCOORD2;
             };
 
             sampler2D _MainTex;
@@ -56,9 +61,21 @@
 			float _PulseRemap;
 			float _StepSparkle;
 
+			float4 _LightDir;
+			float _ShadowSmoothness;
+
 			fixed4 _Color;
 			fixed4 _SparkleColor;
 			fixed4 _FresnelColor;
+			fixed4 _ShadowColor;
+
+			float toon(float3 normal)
+			{
+				float nDotL = dot(normalize(_LightDir), normalize(normal));
+				float remapDot = (nDotL + 1) / 2;
+				float sharpen = smoothstep(_ShadowSmoothness / 2, 1 - (_ShadowSmoothness / 2), remapDot);
+				return sharpen;
+			}
 
 			float fresnel(float3 normal, float3 viewDir, float power)
 			{
@@ -73,6 +90,7 @@
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
 				o.normal =  v.normal;
+				o.worldNormal = mul(unity_ObjectToWorld, v.normal);
 				o.viewDir = ObjSpaceViewDir(v.vertex);
                 return o;
             }
@@ -94,7 +112,11 @@
 				float maskSparkle = step(sparkle, _StepSparkle) * (1 -step(mask, 0)) * mask;
 				fixed4 fresn = fresnel(normalize(i.normal), normalize(i.viewDir), lerp(1, 2, (sin(_Time.y * 7) + 1) / 2)) * _FresnelColor;
 
-				col = lerp(_Color, _SparkleColor, maskSparkle);
+				fixed4 applySparkle = lerp(_Color, _SparkleColor, maskSparkle);
+
+				float shadow = toon(i.worldNormal);
+
+				col = lerp(applySparkle * _ShadowColor, applySparkle, shadow);
 				col += fresn;
 				return col;
             }
