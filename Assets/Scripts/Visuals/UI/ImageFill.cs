@@ -10,6 +10,8 @@ public class ImageFill : MonoBehaviour
     [SerializeField] private Image rightImage;
     [SerializeField] private Image fillImage;
 
+    [SerializeField] private Image[] fillImages;
+
     [Header("Fill Settings")]
     [SerializeField] private float fillSmoothness = 0.2f;
 
@@ -41,6 +43,11 @@ public class ImageFill : MonoBehaviour
             fillImage.fillAmount = smoothFill;
 
             rightImage.transform.position = Vector3.Lerp(leftImage.transform.position, initialRightPos, smoothFill);
+
+            for (int i = 0; i < fillImages.Length; i++)
+            {
+                fillImages[i].fillAmount = smoothFill;
+            }
         }
     }
 }
