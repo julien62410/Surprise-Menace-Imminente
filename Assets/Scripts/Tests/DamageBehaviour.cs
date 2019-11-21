@@ -42,17 +42,20 @@ public class DamageBehaviour : MonoBehaviour
     void Update()
     {
         Vector3 center = Camera.main.WorldToViewportPoint(col.bounds.center);
-
-        if (VariableManager.variableManager.battery > 0 && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+        if (!dead)
         {
-            hp = Mathf.Max(0, hp - Time.deltaTime); ;
-            if (visuals) visuals.DamageAnim();
-        }
+            if (VariableManager.variableManager.battery > 0 && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+            {
+                hp = Mathf.Max(0, hp - Time.deltaTime); ;
+                if (visuals) visuals.DamageAnim();
+                VariableManager.variableManager.Damaging();
+            }
 
-        if (!dead && hp <= 0)
-        {
-            dead = true;
-            TriggerDeath();
+            if (hp <= 0)
+            {
+                dead = true;
+                TriggerDeath();
+            }
         }
 
         UpdateVisuals();
