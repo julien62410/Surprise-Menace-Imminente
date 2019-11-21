@@ -19,13 +19,17 @@ public class BatteryUI : JaugeUI
 
     private void Start()
     {
-        if(VariableManager.variableManager)
+        if (VariableManager.variableManager)
             initialBattery = VariableManager.variableManager.battery;
     }
 
     private void Update()
     {
-        float currentBattery = VariableManager.variableManager.battery;
-        if (batteryFill) batteryFill.SetFill(initialBattery, currentBattery);
+        if (VariableManager.variableManager)
+        {
+            float currentBattery = VariableManager.variableManager.battery;
+            if (batteryFill) batteryFill.SetFill(initialBattery, currentBattery);
+
+        }
     }
 }

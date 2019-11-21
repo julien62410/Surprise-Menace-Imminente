@@ -26,6 +26,7 @@ public class LifeUI : JaugeUI
 
     private void Update()
     {
-        if(lifeFill) lifeFill.SetFill(initialLife, v.lifePlayer);
+        if(v)
+            if(lifeFill) lifeFill.SetFill(initialLife, v.lifePlayer);
     }
 }

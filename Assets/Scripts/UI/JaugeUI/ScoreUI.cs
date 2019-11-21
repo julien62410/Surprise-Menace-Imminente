@@ -25,6 +25,6 @@ public class ScoreUI : JaugeUI
 
     private void Update()
     {
-        if (scoreText) scoreText.text = v.score.ToString();
+        if (scoreText && v) scoreText.text = v.score.ToString();
     }
 }
