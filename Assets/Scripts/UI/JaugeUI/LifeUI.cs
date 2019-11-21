@@ -2,8 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeUI : MonoBehaviour
+public class LifeUI : JaugeUI
 {
+    private static LifeUI instance;
+    public static LifeUI Instance
+    {
+        get
+        {
+            if (!instance) instance = FindObjectOfType<LifeUI>();
+            return instance;
+        }
+    }
+
     [SerializeField] private ImageFill lifeFill;
     private VariableManager v;
     private int initialLife = 0;
@@ -16,6 +26,7 @@ public class LifeUI : MonoBehaviour
 
     private void Update()
     {
-        if(lifeFill) lifeFill.SetFill(initialLife, v.lifePlayer);
+        if(v)
+            if(lifeFill) lifeFill.SetFill(initialLife, v.lifePlayer);
     }
 }

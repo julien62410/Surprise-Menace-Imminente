@@ -9,6 +9,12 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        StartCoroutine(StartingGame());
+    }
+
+    private IEnumerator StartingGame()
+    {
+        yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(GameSceneName);
     }
 }

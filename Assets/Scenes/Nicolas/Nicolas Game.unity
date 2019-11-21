@@ -459,6 +459,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6030414359686216405, guid: 3d1db97839ca36440a9e2e84c4d4546b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1707162027}
     - target: {fileID: 3814634905944373044, guid: 3d1db97839ca36440a9e2e84c4d4546b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -524,11 +529,6 @@ PrefabInstance:
       propertyPath: rend
       value: 
       objectReference: {fileID: 181189821}
-    - target: {fileID: 6030414359686216405, guid: 3d1db97839ca36440a9e2e84c4d4546b,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 1707162027}
     - target: {fileID: 7230717115838777108, guid: 3d1db97839ca36440a9e2e84c4d4546b,
         type: 3}
       propertyPath: m_LocalScale.x

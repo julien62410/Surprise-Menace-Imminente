@@ -6,6 +6,7 @@ Shader "UI/Gradient"
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
         _ColorA ("Color A", Color) = (1,1,1,1)
         _ColorB ("Color B", Color) = (1,1,1,1)
+		_Emissive("Emissive", float) = 1
 
         _StencilComp ("Stencil Comparison", Float) = 8
         _Stencil ("Stencil ID", Float) = 0
@@ -82,6 +83,7 @@ Shader "UI/Gradient"
             fixed4 _TextureSampleAdd;
             float4 _ClipRect;
             float4 _MainTex_ST;
+			float _Emissive;
 
             v2f vert(appdata_t v)
             {
@@ -110,6 +112,7 @@ Shader "UI/Gradient"
                 #ifdef UNITY_UI_ALPHACLIP
                 clip (color.a - 0.001);
                 #endif
+				color.rgb *= _Emissive;
                 return color;
             }
         ENDCG

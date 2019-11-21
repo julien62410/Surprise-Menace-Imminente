@@ -3,8 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreUI : MonoBehaviour
+public class ScoreUI : JaugeUI
 {
+    private static ScoreUI instance;
+    public static ScoreUI Instance
+    {
+        get
+        {
+            if (!instance) instance = FindObjectOfType<ScoreUI>();
+            return instance;
+        }
+    }
+
     [SerializeField] private TextMeshProUGUI scoreText;
     private VariableManager v;
 
@@ -15,6 +25,6 @@ public class ScoreUI : MonoBehaviour
 
     private void Update()
     {
-        if (scoreText) scoreText.text = v.score.ToString();
+        if (scoreText && v) scoreText.text = v.score.ToString();
     }
 }

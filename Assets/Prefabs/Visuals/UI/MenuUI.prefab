@@ -160,8 +160,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 5868889200598266438}
+  images: []
   value: 1
   propertyName: _Emissive
+  updateInEditor: 0
 --- !u!1 &383033502899422422
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,8 +418,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 349363239910838480}
+  images: []
   value: 1
   propertyName: _ShineOffset
+  updateInEditor: 0
 --- !u!1 &1273352407592367052
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +643,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 9}
-  m_SizeDelta: {x: 1143.5, y: 362}
+  m_SizeDelta: {x: 1507.9, y: 362}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &181179439390836784
 CanvasRenderer:
@@ -667,7 +671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: score
+  m_text: scores
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90979765c0069a946b94a7d29c51ef68, type: 2}
   m_sharedMaterial: {fileID: -5628687088439283759, guid: 90979765c0069a946b94a7d29c51ef68,
@@ -696,8 +700,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 336.3
-  m_fontSizeBase: 336.3
+  m_fontSize: 280
+  m_fontSizeBase: 280
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -737,7 +741,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2753282034353570934}
-    characterCount: 5
+    characterCount: 6
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -795,7 +799,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1185, y: 2021.2}
+  m_SizeDelta: {x: 1502.9, y: 2310.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2928637022308426590
 CanvasRenderer:
@@ -1444,8 +1448,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 8382947340367052141}
+  images: []
   value: 1
   propertyName: _Emissive
+  updateInEditor: 0
 --- !u!1 &5381718125659242373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,8 +1539,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 7111621650175744149}
+  images: []
   value: 1
   propertyName: _Emissive
+  updateInEditor: 0
 --- !u!1 &5508512329767746322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,6 +1700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7257812834218688091}
   - component: {fileID: 8436147475624168311}
+  - component: {fileID: 1387942355075318877}
   m_Layer: 0
   m_Name: MenuUI
   m_TagString: Untagged
@@ -1734,6 +1743,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1387942355075318877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7257812834218688088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8002879efeff50a4ba60c97862353c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  best: {fileID: 4901872667335605568}
+  last: {fileID: 7218950973602661006}
 --- !u!1 &7369042289364712855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,8 +1844,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1684420014210295826}
+  images: []
   value: 1
   propertyName: _Emissive
+  updateInEditor: 0
 --- !u!1 &7662093510700285124
 GameObject:
   m_ObjectHideFlags: 0

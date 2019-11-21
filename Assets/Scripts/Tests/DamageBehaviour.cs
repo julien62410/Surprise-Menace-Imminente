@@ -71,6 +71,7 @@ public class DamageBehaviour : MonoBehaviour
 
     private void TriggerDeath()
     {
+        ScoreUI.Instance.Earn();
         VariableManager.variableManager.score++;
         if (sound)
         {

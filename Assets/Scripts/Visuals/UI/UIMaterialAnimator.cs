@@ -5,13 +5,15 @@ using UnityEngine.UI;
 public class UIMaterialAnimator : MonoBehaviour
 {
     [SerializeField] private Image image;
+    [SerializeField] private Image[] images;
     [SerializeField] private float value = 1f;
     [SerializeField] private string propertyName = "_Emissive";
     private Material instance;
+    public bool updateInEditor = false;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
-        UpdateVisuals();
+        if(updateInEditor)UpdateVisuals();
     }
 
     private void Update()
@@ -20,6 +22,15 @@ public class UIMaterialAnimator : MonoBehaviour
     }
 
     private void UpdateVisuals()
+    {
+        UpdateImage(image);
+        for (int i = 0; i < images.Length; i++)
+        {
+            UpdateImage(images[i]);
+        }
+    }
+
+    private void UpdateImage(Image image)
     {
         if (image)
         {

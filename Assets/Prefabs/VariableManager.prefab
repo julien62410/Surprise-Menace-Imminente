@@ -477,7 +477,7 @@ MonoBehaviour:
   enemyPool: {fileID: 0}
   lifeBar: {fileID: 7114464399230404385}
   scoreText: {fileID: 1287403292586418206}
-  damageFilter: {fileID: 7080756404056135373}
+  damageFilter: {fileID: 8755144498953797043}
   difficulty: 0
   lifeEnemy: 2
   enemySpawnDistance: 4
@@ -563,12 +563,17 @@ PrefabInstance:
     - target: {fileID: 2920220056785392167, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6255236918591955016, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
         type: 3}
       propertyPath: m_RaycastTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051777337373783311, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84cf21ab59909d84e9f6f1c92ceda6c0, type: 3}
@@ -584,9 +589,9 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1400323428}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7080756404056135373 stripped
+--- !u!114 &8755144498953797043 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7080756404908305321, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+  m_CorrespondingSourceObject: {fileID: 8755144497625301207, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
     type: 3}
   m_PrefabInstance: {fileID: 1400323428}
   m_PrefabAsset: {fileID: 0}

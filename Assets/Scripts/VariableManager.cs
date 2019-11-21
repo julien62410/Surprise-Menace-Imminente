@@ -82,6 +82,7 @@ public class VariableManager : MonoBehaviour
     public void DamagePlayer(int direction)
     {
         lifePlayer--;
+        LifeUI.Instance.Lose();
         lifeBar.SetFill(maxLifePlayer, lifePlayer);
         damageFilter.Trigger(direction);
         if (lifePlayer <= 0 && !gameOver)
