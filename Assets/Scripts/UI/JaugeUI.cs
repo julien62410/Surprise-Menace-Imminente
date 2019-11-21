@@ -14,6 +14,7 @@ public class JaugeUI : MonoBehaviour
 
     public virtual void Lose()
     {
+        animator.ResetTrigger("Lose");
         animator.SetTrigger("Lose");
     }
 }
