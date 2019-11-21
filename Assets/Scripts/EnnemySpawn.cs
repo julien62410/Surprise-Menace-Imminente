@@ -7,11 +7,19 @@ public class EnnemySpawn : MonoBehaviour
     private static EnnemySpawn _instance;
     public static EnnemySpawn Instance { get { return _instance; } }
 
-    public int ennemyCountPerSpawn = 1;
-
     private List<GameObject> ennemyPoolList = new List<GameObject>();
     private GameObject batteryObject;
     private float timer;
+
+    private void OnEnable()
+    {
+        DetectSurfaces.Instance.PlaneFoundInWorld += SpawnBonus;
+    }
+
+    private void OnDisable()
+    {
+        DetectSurfaces.Instance.PlaneFoundInWorld -= SpawnBonus;
+    }
 
     private void Awake()
     {
@@ -35,12 +43,12 @@ public class EnnemySpawn : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer>= 5 - 4 * VariableManager.variableManager.difficulty)
+        if (timer >= 5 - 4 * VariableManager.variableManager.difficulty)
         {
             timer = 0f;
             SpawnEnnemy();
         }
-        if(VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+        if (VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
         {
             SpawnBattery();
         }
@@ -61,29 +69,26 @@ public class EnnemySpawn : MonoBehaviour
         }
     }
 
-    private void SpawnEnnemy(int number = 1)
+    private void SpawnEnnemy()
     {
-        for (int i = 0; i < ennemyCountPerSpawn; i++)
+        GameObject _ennemy = GetFirstFreeEnnemyInPool();
+
+        if (_ennemy != null)
         {
-            GameObject _ennemy = GetFirstFreeEnnemyInPool();
+            EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
+            int _rotation = Random.Range(0, 361);
 
-            if (_ennemy != null)
-            {
-                EnnemyControl _ennemyControl = _ennemy.GetComponent<EnnemyControl>();
-                int _rotation = Random.Range(0, 361);
-
-                _ennemy.transform.position = VariableManager.variableManager.arCamera.transform.position;
-                _ennemy.GetComponent<DamageBehaviour>().dead = false;
-                _ennemyControl.ennemyObject.transform.position = new Vector3(_ennemy.transform.position.x + VariableManager.variableManager.enemySpawnDistance, 
-                    _ennemy.transform.position.y, 
-                    _ennemy.transform.position.z);
-                _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
-                _ennemy.SetActive(true);
-                _ennemy.GetComponentInChildren<AudioSource>().Play();
-            } else
-            {
-                Debug.LogWarning("Pool entièrement utilisé");
-            }
+            _ennemy.transform.position = VariableManager.variableManager.arCamera.transform.position;
+            _ennemy.GetComponent<DamageBehaviour>().dead = false;
+            _ennemyControl.ennemyObject.transform.position = new Vector3(_ennemy.transform.position.x + VariableManager.variableManager.enemySpawnDistance,
+                _ennemy.transform.position.y,
+                _ennemy.transform.position.z);
+            _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
+            _ennemy.SetActive(true);
+            _ennemy.GetComponentInChildren<AudioSource>().Play();
+        } else
+        {
+            Debug.LogWarning("Pool entièrement utilisé");
         }
     }
 
@@ -120,15 +125,56 @@ public class EnnemySpawn : MonoBehaviour
         return null;
     }
 
-    public void CollisionWithPlayer(GameObject ennemy)
+    public void CollisionWithPlayer(GameObject objects)
     {
-        if(ennemy.layer == LayerMask.NameToLayer("Battery"))
+        if (objects.layer == LayerMask.NameToLayer("Battery"))
         {
             VariableManager.variableManager.battery = 100f;
             BatteryUI.Instance.Earn();
-            ennemy.GetComponentInChildren<BatteryVisuals>().Pickup();
+            objects.GetComponentInChildren<BatteryVisuals>().Pickup();
 
         }
-        //SpawnEnnemy(ennemyCountPerSpawn);
+        else if (objects.layer == LayerMask.NameToLayer("X2"))
+        {
+            VariableManager.variableManager.multiplyScore = 2;
+
+            if (VariableManager.variableManager.waitForResetMultiplicateur != null)
+                StopCoroutine(VariableManager.variableManager.waitForResetMultiplicateur);
+            VariableManager.variableManager.waitForResetMultiplicateur = StartCoroutine("MultiplyScore");
+
+            //Destroy(objects);
+        }
+        else if (objects.layer == LayerMask.NameToLayer("Heart"))
+        {
+            if (VariableManager.variableManager.lifePlayer < VariableManager.variableManager.maxLifePlayer)
+                VariableManager.variableManager.lifePlayer++;
+
+            //Destroy(objects);
+        }
+    }
+
+    private void SpawnBonus (GameObject parentSpawn)
+    {
+        GameObject bonus;
+        int rand = Random.Range(0, 2);
+
+        if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
+        {
+            if (rand == 0)
+                bonus = Instantiate(VariableManager.variableManager.heart);
+            else if (rand == 1)
+                bonus = Instantiate(VariableManager.variableManager.multiplicateur);
+            else
+                return;
+
+            bonus.transform.SetParent(parentSpawn.transform);
+            bonus.transform.position = Vector3.zero;
+        }
+    }
+
+    private IEnumerator MultiplyScore()
+    {
+        yield return new WaitForSeconds(VariableManager.variableManager.durationMultiplicateur);
+        VariableManager.variableManager.multiplyScore = 1;
     }
 }

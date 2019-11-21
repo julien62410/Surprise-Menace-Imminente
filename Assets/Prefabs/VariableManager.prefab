@@ -52,16 +52,23 @@ MonoBehaviour:
   lifeBar: {fileID: 7114464399230404385}
   scoreText: {fileID: 1287403292586418206}
   damageFilter: {fileID: 8755144498953797043}
-  difficulty: 0
   lifeEnemy: 2
   enemySpawnDistance: 4
   enemySpeed: 0.3
   distBetweenEnemyAndPlayerToDamagePlayer: 0.3
   arCamera: {fileID: 0}
-  batteryUsage: 10
+  batteryUsage: 5
   battery: 100
-  score: 0
+  pointsPerEnemyDead: 10
   lifePlayer: 5
+  heart: {fileID: 6280710824708958540, guid: 7055ae0839192ee4cb64a98f75d2ba30, type: 3}
+  multiplicateur: {fileID: 4511702820697107912, guid: 200a79cd2eae0d8449db5ffc5e38bd7b,
+    type: 3}
+  durationMultiplicateur: 1
+  difficulty: 0
+  multiplyScore: 0
+  maxLifePlayer: 0
+  score: 0
 --- !u!1001 &1400323428
 PrefabInstance:
   m_ObjectHideFlags: 0

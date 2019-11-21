@@ -72,7 +72,8 @@ public class DamageBehaviour : MonoBehaviour
     private void TriggerDeath()
     {
         ScoreUI.Instance.Earn();
-        VariableManager.variableManager.score++;
+        VariableManager.variableManager.score += (VariableManager.variableManager.pointsPerEnemyDead * VariableManager.variableManager.multiplyScore);
+
         if (sound)
         {
             StopAllCoroutines();
@@ -83,7 +84,6 @@ public class DamageBehaviour : MonoBehaviour
             explosionSound.Play();
         }
         if (visuals) visuals.DeathFeedback();
-        EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
     }
 
     IEnumerator PlaySound()

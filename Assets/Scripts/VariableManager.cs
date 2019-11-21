@@ -19,9 +19,6 @@ public class VariableManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public DamageFilter damageFilter;
 
-    [HideInInspector]
-    public float difficulty;
-
     [Header("Enemy Stats")]
     public float lifeEnemy;
     public float enemySpawnDistance;
@@ -36,21 +33,37 @@ public class VariableManager : MonoBehaviour
     [Header("Player")]
     public float batteryUsage;
     public float battery;
-    public int score;
+    public int pointsPerEnemyDead;
     public int lifePlayer;
+
+    [Header("Bonus")]
+    public GameObject heart;
+    public GameObject multiplicateur;
+    public int durationMultiplicateur;
 
     public static VariableManager variableManager = null;
 
-    private int maxLifePlayer;
+    [HideInInspector]
+    public float difficulty;
+    //[HideInInspector]
+    public int multiplyScore = 1;
+    [HideInInspector]
+    public int maxLifePlayer;
+    [HideInInspector]
+    public Coroutine waitForResetMultiplicateur = null;
+    [HideInInspector]
+    public int score;
+
     private bool gameOver;
     private bool damaging, trueDamaging;
-    
+
     private void Awake()
     {
         Time.timeScale = 1f;
         gameOver = false;
         Application.targetFrameRate = 30;
         maxLifePlayer = lifePlayer;
+
         if (variableManager == null)
         {
             variableManager = this;
