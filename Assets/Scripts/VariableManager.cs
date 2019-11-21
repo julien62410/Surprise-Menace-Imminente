@@ -42,6 +42,7 @@ public class VariableManager : MonoBehaviour
 
     private int maxLifePlayer;
     private bool gameOver;
+    private bool damaging, trueDamaging;
     
     private void Awake()
     {
@@ -63,6 +64,19 @@ public class VariableManager : MonoBehaviour
     {
         difficulty = Mathf.Min(1, (float)score / 100.0f);
         scoreText.SetText(score.ToString());
+    }
+
+    private void LateUpdate()
+    {
+        if (damaging)
+        {
+            trueDamaging = true;
+            damaging = false;
+        }
+        else
+        {
+            trueDamaging = false;
+        }
     }
 
     public void DamagePlayer()
@@ -88,5 +102,15 @@ public class VariableManager : MonoBehaviour
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("Menu");
+    }
+
+    public void Damaging()
+    {
+        damaging = true;
+    }
+
+    public bool IsDamaging()
+    {
+        return trueDamaging;
     }
 }
