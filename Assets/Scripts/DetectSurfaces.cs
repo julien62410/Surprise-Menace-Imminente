@@ -2,12 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleARCore;
+using UnityEngine.Events;
 
 public class DetectSurfaces : MonoBehaviour
 {
+    private static DetectSurfaces _instance;
+    public static DetectSurfaces Instance { get { return _instance; } }
+
     public GameObject plane;
     public List<DetectedPlane> m_detectedPlanes = new List<DetectedPlane>();
     public List<GameObject> listPlaneInScene = new List<GameObject>();
+
+    public UnityAction<GameObject> PlaneFoundInWorld;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     private void Update()
     {
@@ -36,6 +54,7 @@ public class DetectSurfaces : MonoBehaviour
     {
         Pose pose = m_detectedPlane.CenterPose;
         Anchor anchor = m_detectedPlane.CreateAnchor(pose);
+        PlaneFoundInWorld.Invoke(anchor.gameObject);
 
         GameObject planeObject =
             Instantiate(plane, anchor.transform.position, anchor.transform.rotation);
