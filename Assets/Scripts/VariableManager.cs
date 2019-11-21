@@ -36,6 +36,8 @@ public class VariableManager : MonoBehaviour
     
     private void Awake()
     {
+        Application.targetFrameRate = 30;
+        Screen.SetResolution(Screen.width / 2, Screen.height / 2, false);
         if (variableManager == null)
         {
             variableManager = this;

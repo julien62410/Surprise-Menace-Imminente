@@ -16,7 +16,6 @@ public class DamageBehaviour : MonoBehaviour
     [SerializeField] private EnemyVisuals visuals;
     private float hpSave;
     private bool isInit = false;
-    private ImminentDanger danger;
 
     void Start()
     {
@@ -28,7 +27,6 @@ public class DamageBehaviour : MonoBehaviour
         }
         dead = false;
         col = GetComponent<EnnemyControl>().ennemyObject.GetComponent<BoxCollider>();
-        danger = Camera.main.GetComponent<ImminentDanger>();
         if (sound)
         {
             sound.pitch += Random.Range(-0.1f, 0.1f);
@@ -45,7 +43,7 @@ public class DamageBehaviour : MonoBehaviour
     {
         Vector3 center = Camera.main.WorldToViewportPoint(col.bounds.center);
 
-        if (danger.battery > 0 && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+        if (VariableManager.variableManager.battery > 0 && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
         {
             hp = Mathf.Max(0, hp - Time.deltaTime); ;
             if (visuals) visuals.DamageAnim();
