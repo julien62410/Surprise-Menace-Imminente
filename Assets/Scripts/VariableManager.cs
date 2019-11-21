@@ -39,10 +39,15 @@ public class VariableManager : MonoBehaviour
     public int score;
     public int lifePlayer;
 
+    [Header("Audio")]
+    public AudioSource[] endSounds;
+    public AudioSource startSound;
+    public AudioSource gameOverSound;
+
     public static VariableManager variableManager = null;
 
     private int maxLifePlayer;
-    private bool gameOver;
+    public bool gameOver;
     private bool damaging, trueDamaging;
     
     private void Awake()
@@ -58,6 +63,7 @@ public class VariableManager : MonoBehaviour
         }
         else if (variableManager != this)
             Destroy(gameObject);
+        startSound.Play();
     }
 
     private void Update()
@@ -84,6 +90,10 @@ public class VariableManager : MonoBehaviour
         lifePlayer--;
         LifeUI.Instance.Lose();
         lifeBar.SetFill(maxLifePlayer, lifePlayer);
+        foreach (AudioSource a in endSounds)
+        {
+            a.Play();
+        }
         damageFilter.Trigger(direction);
         if (lifePlayer <= 0 && !gameOver)
         {
@@ -97,11 +107,9 @@ public class VariableManager : MonoBehaviour
         if (!PlayerPrefs.HasKey("highScores") || score > PlayerPrefs.GetInt("highScores"))
             PlayerPrefs.SetInt("highScores", score);
 
-        Time.timeScale = 0f;
+        gameOverSound.Play();
 
-        yield return new WaitForSecondsRealtime(2);
-
-        Time.timeScale = 1f;
+        yield return new WaitForSecondsRealtime(5f);
 
         SceneManager.LoadScene("Menu");
     }
