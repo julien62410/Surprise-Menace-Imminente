@@ -33,13 +33,36 @@ public class EnnemyControl : MonoBehaviour
 
     private void DistanceWithPlayer()
     {
-        float _distance = Vector3.Distance(ennemyObject.transform.position, VariableManager.variableManager.arCamera.gameObject.transform.position);
-
+        Transform player = VariableManager.variableManager.arCamera.gameObject.transform;
+        float _distance = Vector3.Distance(ennemyObject.transform.position, player.position);
+        
         if (_distance < VariableManager.variableManager.distBetweenEnemyAndPlayerToDamagePlayer)
         {
+            Vector3 relative = Quaternion.Euler(-player.rotation.eulerAngles.x, -player.rotation.eulerAngles.y, -player.rotation.eulerAngles.z) * (ennemyObject.transform.position - player.position);
+
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
+
+            if (relative.z >= 0 && relative.z >= Mathf.Abs(relative.x))
+            {
+                VariableManager.variableManager.DamagePlayer(0);
+            }
+            else if (relative.x <= 0 && -relative.x >= Mathf.Abs(relative.z))
+            {
+                VariableManager.variableManager.DamagePlayer(1);
+
+            }
+            else if (relative.z <= 0 && -relative.z >= Mathf.Abs(relative.x))
+            {
+                VariableManager.variableManager.DamagePlayer(2);
+
+            }
+            else if (relative.x >= 0 && relative.x >= Mathf.Abs(relative.z))
+            {
+                VariableManager.variableManager.DamagePlayer(3);
+
+            }
+
             DesactivateGameObject();
-            VariableManager.variableManager.DamagePlayer();
 
         }
     }
