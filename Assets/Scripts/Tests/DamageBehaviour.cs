@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DamageBehaviour : MonoBehaviour
 {
-    public AudioSource sound;
+    public AudioSource sound, explosionSound;
 
-    private int hp;
+    private float hp;
 
     [HideInInspector]
     public bool dead;
@@ -14,8 +14,7 @@ public class DamageBehaviour : MonoBehaviour
     private Collider col;
 
     [SerializeField] private EnemyVisuals visuals;
-    private float timer;
-    private int hpSave;
+    private float hpSave;
     private bool isInit = false;
     private ImminentDanger danger;
 
@@ -28,9 +27,12 @@ public class DamageBehaviour : MonoBehaviour
             isInit = true;
         }
         dead = false;
-        timer = 0f;
         col = GetComponent<EnnemyControl>().ennemyObject.GetComponent<BoxCollider>();
         danger = Camera.main.GetComponent<ImminentDanger>();
+        if (sound)
+        {
+            sound.pitch += Random.Range(-0.1f, 0.1f);
+        }
     }
 
     private void OnEnable()
@@ -41,14 +43,11 @@ public class DamageBehaviour : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-
         Vector3 center = Camera.main.WorldToViewportPoint(col.bounds.center);
 
-        if (danger.battery > 0 && timer >= VariableManager.variableManager.secondPerOneDamage && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+        if (danger.battery > 0 && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
         {
-            hp--;
-            timer = 0f;
+            hp = Mathf.Max(0, hp - Time.deltaTime); ;
             if (visuals) visuals.DamageAnim();
         }
 
@@ -77,13 +76,17 @@ public class DamageBehaviour : MonoBehaviour
             StopAllCoroutines();
             sound.Stop();
         }
+        if (explosionSound)
+        {
+            explosionSound.Play();
+        }
         if (visuals) visuals.DeathFeedback();
         EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
     }
 
     IEnumerator PlaySound()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
         if (sound) sound.Play();
     }
 }

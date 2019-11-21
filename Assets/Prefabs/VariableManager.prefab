@@ -45,18 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radiusGlitch: 0.35
   scriptGlitchEffect: {fileID: 0}
-  radiusAudio: 0
-  delayBetweenSoundFantome: 4
   enemyPrefab: {fileID: 580846738752140957, guid: 7ddbe0cb835d65e4aafb22fc9a73fdaf,
     type: 3}
   enemyPool: {fileID: 0}
-  lifeEnemy: 100
+  difficulty: 0
+  lifeEnemy: 2
   enemySpawnDistance: 4
   enemySpeed: 0.3
-  secondPerOneDamage: 0.01
   distBetweenEnemyAndPlayerToDamagePlayer: 0.3
   arCamera: {fileID: 0}
-  batteryUsage: 1
+  batteryUsage: 0
   battery: 100
   score: 0
   lifePlayer: 5

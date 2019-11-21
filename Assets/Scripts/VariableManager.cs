@@ -16,12 +16,11 @@ public class VariableManager : MonoBehaviour
     public float difficulty;
 
     [Header("Enemy Stats")]
-    public int lifeEnemy;
+    public float lifeEnemy;
     public float enemySpawnDistance;
     public float enemySpeed;
 
     [Header("Enemy Damage")]
-    public float secondPerOneDamage;
     public float distBetweenEnemyAndPlayerToDamagePlayer;
 
     [Header("Camera")]
