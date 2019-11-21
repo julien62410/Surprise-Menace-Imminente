@@ -10,6 +10,7 @@ public class EnnemySpawn : MonoBehaviour
     public int ennemyCountPerSpawn = 1;
 
     private List<GameObject> ennemyPoolList = new List<GameObject>();
+    private GameObject batteryObject;
     private float timer;
 
     private void Awake()
@@ -39,13 +40,24 @@ public class EnnemySpawn : MonoBehaviour
             timer = 0f;
             SpawnEnnemy();
         }
+        if(VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+        {
+            SpawnBattery();
+        }
     }
 
     private void InitPoolList()
     {
         foreach (Transform tsf in VariableManager.variableManager.enemyPool.transform)
         {
-            ennemyPoolList.Add(tsf.gameObject);
+            if (tsf.gameObject.layer == LayerMask.NameToLayer("Battery"))
+            {
+                batteryObject = tsf.gameObject;
+            }
+            else
+            {
+                ennemyPoolList.Add(tsf.gameObject);
+            }
         }
     }
 
@@ -75,6 +87,27 @@ public class EnnemySpawn : MonoBehaviour
         }
     }
 
+    private void SpawnBattery()
+    {
+        int negX = 1;
+        int negZ = 1;
+
+        if (Random.Range(-1, 1) < 0)
+        {
+            negZ = -1;
+        }
+        if (Random.Range(-1, 1) < 0)
+        {
+            negZ = -1;
+        }
+
+        batteryObject.transform.position = new Vector3(negX * Random.Range(0.5f, 1.0f),
+            batteryObject.transform.position.y,
+            negZ * Random.Range(0.5f, 1.0f));
+        batteryObject.SetActive(true);
+        //batteryObject.GetComponentInChildren<AudioSource>().Play();
+    }
+
     private GameObject GetFirstFreeEnnemyInPool()
     {
         foreach (GameObject ennemy in ennemyPoolList)
@@ -89,6 +122,11 @@ public class EnnemySpawn : MonoBehaviour
 
     public void CollisionWithPlayer(GameObject ennemy)
     {
+        if(ennemy.layer == LayerMask.NameToLayer("Battery"))
+        {
+            VariableManager.variableManager.battery = 100f;
+            ennemy.SetActive(false);
+        }
         //SpawnEnnemy(ennemyCountPerSpawn);
     }
 }
