@@ -17,6 +17,7 @@ public class VariableManager : MonoBehaviour
     [Header("UI")]
     public ImageFill lifeBar;
     public TextMeshProUGUI scoreText;
+    public DamageFilter damageFilter;
 
     [HideInInspector]
     public float difficulty;
@@ -49,7 +50,6 @@ public class VariableManager : MonoBehaviour
         Time.timeScale = 1f;
         gameOver = false;
         Application.targetFrameRate = 30;
-        Screen.SetResolution(Screen.width / 2, Screen.height / 2, false);
         maxLifePlayer = lifePlayer;
         if (variableManager == null)
         {
@@ -79,11 +79,12 @@ public class VariableManager : MonoBehaviour
         }
     }
 
-    public void DamagePlayer()
+    public void DamagePlayer(int direction)
     {
         lifePlayer--;
         LifeUI.Instance.Lose();
         lifeBar.SetFill(maxLifePlayer, lifePlayer);
+        damageFilter.Trigger(direction);
         if (lifePlayer <= 0 && !gameOver)
         {
             gameOver = true;
