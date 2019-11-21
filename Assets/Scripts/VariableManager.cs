@@ -19,9 +19,6 @@ public class VariableManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public DamageFilter damageFilter;
 
-    [HideInInspector]
-    public float difficulty;
-
     [Header("Enemy Stats")]
     public float lifeEnemy;
     public float enemySpawnDistance;
@@ -36,26 +33,46 @@ public class VariableManager : MonoBehaviour
     [Header("Player")]
     public float batteryUsage;
     public float battery;
-    public int score;
+    public int pointsPerEnemyDead;
     public int lifePlayer;
+
 
     [Header("Audio")]
     public AudioSource[] endSounds;
     public AudioSource startSound;
     public AudioSource gameOverSound;
 
+    [Header("Bonus")]
+    public GameObject heart;
+    public GameObject multiplicateur;
+    public int durationMultiplicateur;
+
     public static VariableManager variableManager = null;
 
-    private int maxLifePlayer;
+    [HideInInspector]
+    public float difficulty;
+    //[HideInInspector]
+    public int multiplyScore;
+    [HideInInspector]
+    public int maxLifePlayer;
+    [HideInInspector]
+    public Coroutine waitForResetMultiplicateur = null;
+    [HideInInspector]
+    public int score;
+    [HideInInspector]
     public bool gameOver;
+
     private bool damaging, trueDamaging;
-    
+
     private void Awake()
     {
         Time.timeScale = 1f;
         gameOver = false;
+        score = 0;
+        multiplyScore = 1;
         Application.targetFrameRate = 30;
         maxLifePlayer = lifePlayer;
+
         if (variableManager == null)
         {
             variableManager = this;
@@ -68,8 +85,7 @@ public class VariableManager : MonoBehaviour
 
     private void Update()
     {
-        difficulty = Mathf.Min(1, (float)score / 100.0f);
-        scoreText.SetText(score.ToString());
+        difficulty = Mathf.Min(1, (float)score / 10000.0f);
     }
 
     private void LateUpdate()

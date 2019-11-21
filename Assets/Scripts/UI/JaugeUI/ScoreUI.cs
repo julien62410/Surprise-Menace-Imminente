@@ -16,15 +16,17 @@ public class ScoreUI : JaugeUI
     }
 
     [SerializeField] private TextMeshProUGUI scoreText;
-    private VariableManager v;
 
     private void Start()
     {
-        v = VariableManager.variableManager;
+        scoreText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        if (scoreText && v) scoreText.text = v.score.ToString();
+        if (scoreText)
+        {
+            scoreText.SetText(VariableManager.variableManager.score.ToString());
+        }
     }
 }

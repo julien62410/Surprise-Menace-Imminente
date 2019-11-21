@@ -40,8 +40,6 @@ public class EnnemyControl : MonoBehaviour
         {
             Vector3 relative = Quaternion.Euler(-player.rotation.eulerAngles.x, -player.rotation.eulerAngles.y, -player.rotation.eulerAngles.z) * (ennemyObject.transform.position - player.position);
 
-            EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
-
             if (relative.z >= 0 && relative.z >= Mathf.Abs(relative.x))
             {
                 VariableManager.variableManager.DamagePlayer(0);
