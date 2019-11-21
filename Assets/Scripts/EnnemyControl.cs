@@ -39,15 +39,8 @@ public class EnnemyControl : MonoBehaviour
         {
             EnnemySpawn.Instance.CollisionWithPlayer(this.gameObject);
             DesactivateGameObject();
-            VariableManager.variableManager.lifePlayer--;
+            VariableManager.variableManager.DamagePlayer();
 
-            if (VariableManager.variableManager.lifePlayer == 0)
-            {
-                if (!PlayerPrefs.HasKey("highScores") || VariableManager.variableManager.score > PlayerPrefs.GetInt("highScores"))
-                    PlayerPrefs.SetInt("highScores", VariableManager.variableManager.score);
-
-                SceneManager.LoadScene("Menu");
-            }
         }
     }
 
