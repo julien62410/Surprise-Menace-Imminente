@@ -19,7 +19,13 @@ public class VariableManager : MonoBehaviour
     public ImageFill lifeBar;
     public TextMeshProUGUI scoreText;
     public DamageFilter damageFilter;
+
+    [Header("Reticle")]
     public Image reticle;
+    public Color damageColor;
+    public Color normalColor;
+    public Color noBatteryColor;
+    public Animator outOfBattery;
 
     [Header("Enemy Stats")]
     public float lifeEnemy;
@@ -48,14 +54,14 @@ public class VariableManager : MonoBehaviour
     public GameObject heart;
     public GameObject multiplicateur;
     public int durationMultiplicateur;
-    public GameObject surfacePrefab;
+    public int distanceSpawnBonus;
 
     public static VariableManager variableManager = null;
 
     [HideInInspector]
     public float difficulty;
     [HideInInspector]
-    public int multiplyScore = 1;
+    public int multiplyScore;
     [HideInInspector]
     public int maxLifePlayer;
     [HideInInspector]
@@ -64,6 +70,8 @@ public class VariableManager : MonoBehaviour
     public int score;
     [HideInInspector]
     public bool gameOver;
+    [HideInInspector]
+    public bool startGame;
 
     private bool damaging, trueDamaging;
 
@@ -73,6 +81,7 @@ public class VariableManager : MonoBehaviour
         gameOver = false;
         score = 0;
         multiplyScore = 1;
+        startGame = false;
         Application.targetFrameRate = 30;
         maxLifePlayer = lifePlayer;
 
@@ -102,13 +111,24 @@ public class VariableManager : MonoBehaviour
         {
             trueDamaging = false;
         }
-        if (trueDamaging)
+
+        outOfBattery.SetBool("OutOfBattery", !(battery > 0));
+
+        if (battery > 0)
         {
-            reticle.color = Color.red;
+            if (trueDamaging)
+            {
+                reticle.color = damageColor;
+            }
+            else
+            {
+                reticle.color = normalColor;
+            }
         }
+
         else
         {
-            reticle.color = Color.white;
+            reticle.color = noBatteryColor;
         }
     }
 
@@ -133,6 +153,8 @@ public class VariableManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("highScores") || score > PlayerPrefs.GetInt("highScores"))
             PlayerPrefs.SetInt("highScores", score);
+
+        PlayerPrefs.SetInt("lastScore", score);
 
         gameOverSound.Play();
 

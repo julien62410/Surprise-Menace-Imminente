@@ -135,17 +135,17 @@ PrefabInstance:
     - target: {fileID: 4274579034387747821, guid: 7bf8c6365d5ee6940ba14d0cafefcf69,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.38697788
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4274579034387747821, guid: 7bf8c6365d5ee6940ba14d0cafefcf69,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.054490212
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4274579034387747821, guid: 7bf8c6365d5ee6940ba14d0cafefcf69,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.30842865
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4274579034387747821, guid: 7bf8c6365d5ee6940ba14d0cafefcf69,
         type: 3}
@@ -325,6 +325,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
+--- !u!114 &1802711695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4274579034387747822, guid: 7bf8c6365d5ee6940ba14d0cafefcf69,
+    type: 3}
+  m_PrefabInstance: {fileID: 416324418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eec389088e574140ac935c24d687faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1897837509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4555184028493987213, guid: 123a5de1c15e7b942b0e943d91119361,
@@ -527,6 +539,11 @@ PrefabInstance:
       propertyPath: enemyPool
       value: 
       objectReference: {fileID: 1897837509}
+    - target: {fileID: 2084318774588089023, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.3000488
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29104b68b789ada40b59e41a9d75859c, type: 3}
 --- !u!1001 &1456910976511467147
@@ -606,5 +623,15 @@ PrefabInstance:
       propertyPath: ennemyPool
       value: 
       objectReference: {fileID: 1897837509}
+    - target: {fileID: 1456910974829748070, guid: 490f67504f3c0bf4680f52b7b7e1f8d4,
+        type: 3}
+      propertyPath: detectSurfaces
+      value: 
+      objectReference: {fileID: 1802711695}
+    - target: {fileID: 1456910974829748070, guid: 490f67504f3c0bf4680f52b7b7e1f8d4,
+        type: 3}
+      propertyPath: debug
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 490f67504f3c0bf4680f52b7b7e1f8d4, type: 3}

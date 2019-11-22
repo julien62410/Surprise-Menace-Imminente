@@ -17,6 +17,8 @@ public class DamageBehaviour : MonoBehaviour
     private float hpSave;
     private bool isInit = false;
 
+    private bool gettingDamaged = false;
+
     void Start()
     {
         if (!isInit)
@@ -47,8 +49,15 @@ public class DamageBehaviour : MonoBehaviour
             if (VariableManager.variableManager.battery > 0 && center.x > 0.2f && center.y > 0.15f && center.z > 0 && center.x < 0.8f && center.y < 0.85f)
             {
                 hp = Mathf.Max(0, hp - Time.deltaTime); ;
-                if (visuals) visuals.DamageAnim();
+                gettingDamaged = true;
                 VariableManager.variableManager.Damaging();
+
+                VariableManager.variableManager.battery = Mathf.Max(0, VariableManager.variableManager.battery - VariableManager.variableManager.batteryUsage * Time.deltaTime);
+            }
+
+            else
+            {
+                gettingDamaged = false;
             }
 
             if (hp <= 0)
@@ -66,6 +75,7 @@ public class DamageBehaviour : MonoBehaviour
         if(visuals)
         {
             visuals.SetExplosionProgress(hpSave, hp);
+            visuals.Anim(gettingDamaged);
         }
     }
 

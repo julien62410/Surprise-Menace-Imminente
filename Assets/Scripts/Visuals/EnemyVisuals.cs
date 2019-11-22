@@ -25,13 +25,23 @@ public class EnemyVisuals : MonoBehaviour
     [SerializeField] private float maxGonfle = 0.2f;
     [SerializeField] private Renderer rend;
 
+    [SerializeField] private ParticleSystem damagedPs;
 
     [Header("Climax")]
     [SerializeField] private ParticleSystem explosionPs;
     [SerializeField] private GameObject[] toDeactivate;
+   
 
     public delegate void VisualEvent();
     public VisualEvent onDeathFeedbackPlayed;
+    private bool playMode = false;
+
+    private bool wasGettingDamaged = false;
+
+    private void Start()
+    {
+        playMode = true;
+    }
 
     private void OnEnable()
     {
@@ -53,14 +63,12 @@ public class EnemyVisuals : MonoBehaviour
         UpdateExplosion();
     }
 
-    public void DamageAnim()
+    public void Anim(bool damaged)
     {
-        animator.SetBool("damaged", true);
-    }
-
-    public void IdleAnim()
-    {
-        animator.SetBool("damaged", false);
+        animator.SetBool("damaged", damaged);
+        if(!wasGettingDamaged && damaged) damagedPs.Play();
+        if(wasGettingDamaged && !damaged) damagedPs.Stop();
+        wasGettingDamaged = damaged;
     }
 
     public void SetExplosionProgress(float hpMax, float currentHp)
@@ -94,9 +102,10 @@ public class EnemyVisuals : MonoBehaviour
         }
         if (rend)
         {
-            Material mat = rend.sharedMaterial;
-            mat.SetFloat("_Gonfle", maxGonfle * explosionProgress);
-            rend.sharedMaterial = mat;
+            //Material mat = rend.sharedMaterial;
+            if(playMode) rend.material.SetFloat("_Gonfle", maxGonfle * explosionProgress);
+            else rend.sharedMaterial.SetFloat("_Gonfle", maxGonfle * explosionProgress);
+            //rend.sharedMaterial = mat;
         }
     }
 
