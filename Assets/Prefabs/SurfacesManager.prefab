@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eec389088e574140ac935c24d687faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plane: {fileID: 6535899771408385381, guid: 477c3bac277f9b048bfb18b978c76982, type: 3}
+  surfacePrefab: {fileID: 6535899771408385381, guid: 477c3bac277f9b048bfb18b978c76982,
+    type: 3}
   listPlaneInScene: []
