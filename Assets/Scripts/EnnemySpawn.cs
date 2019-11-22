@@ -159,14 +159,11 @@ public class EnnemySpawn : MonoBehaviour
             VariableManager.variableManager.battery = 100f;
             BatteryUI.Instance.Earn();
 
-            objects.GetComponentInChildren<BatteryVisuals>().Pickup();
+            objects.GetComponentInChildren<EntityVisuals>().Pickup();
             objects.GetComponent<BatteryAudio>().grab.Play();
             objects.GetComponent<BatteryAudio>().bzzt.Stop();
-
-            objects.GetComponentInChildren<BatteryVisuals>().Pickup();
-
-
         }
+
         else if (objects.layer == LayerMask.NameToLayer("Multi"))
         {
             VariableManager.variableManager.multiplyScore = 10;
@@ -174,14 +171,13 @@ public class EnnemySpawn : MonoBehaviour
             if (VariableManager.variableManager.waitForResetMultiplicateur != null)
                 StopCoroutine(VariableManager.variableManager.waitForResetMultiplicateur);
             VariableManager.variableManager.waitForResetMultiplicateur = StartCoroutine("MultiplyScore");
-
-            Destroy(objects);
         }
         else if (objects.layer == LayerMask.NameToLayer("Heart"))
         {
             VariableManager.variableManager.lifePlayer = VariableManager.variableManager.maxLifePlayer;
-            Destroy(objects);
         }
+
+        objects.GetComponentInChildren<EntityVisuals>().Pickup();
     }
 
     private void SpawnBonus (GameObject parentSpawn)

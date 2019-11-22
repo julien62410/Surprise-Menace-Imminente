@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BatteryVisuals : MonoBehaviour
+public class EntityVisuals : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private ParticleSystem pickupFx;
     [SerializeField] private Collider coll;
     [SerializeField] private GameObject[] meshes;
+    [SerializeField] private bool destroy = false;
 
     public void Pickup()
     {
@@ -29,5 +30,6 @@ public class BatteryVisuals : MonoBehaviour
         }
         coll.enabled = true;
         transform.parent.gameObject.SetActive(false);
+        if (destroy) Destroy(transform.parent.gameObject);
     }
 }
