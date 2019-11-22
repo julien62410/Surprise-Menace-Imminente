@@ -41,7 +41,6 @@ public class EnnemySpawn : MonoBehaviour
         startTimer = 0f;
         timer = 0f;
         InitPoolList();
-        SpawnEnnemy();
     }
 
     private void Update()
@@ -175,14 +174,6 @@ public class EnnemySpawn : MonoBehaviour
             objects.GetComponent<BatteryAudio>().bzzt.Stop();
         }
 
-        else if (objects.layer == LayerMask.NameToLayer("Multi"))
-        {
-            VariableManager.variableManager.multiplyScore = 10;
-
-            if (VariableManager.variableManager.waitForResetMultiplicateur != null)
-                StopCoroutine(VariableManager.variableManager.waitForResetMultiplicateur);
-            VariableManager.variableManager.waitForResetMultiplicateur = StartCoroutine("MultiplyScore");
-        }
         else if (objects.layer == LayerMask.NameToLayer("Heart"))
         {
             VariableManager.variableManager.Heal();
@@ -195,47 +186,16 @@ public class EnnemySpawn : MonoBehaviour
     {
 
         if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
-
         {
-
             GameObject bonus;
 
-            int rand = Random.Range(0, 2);
-
-
-
-            if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
-
+            if (VariableManager.variableManager.heart != null)
             {
-
-                if (rand == 0)
-
-                    bonus = Instantiate(VariableManager.variableManager.heart);
-
-                else if (rand == 1)
-
-                    bonus = Instantiate(VariableManager.variableManager.multiplicateur);
-
-                else
-
-                    return;
-
-
-
+                bonus = Instantiate(VariableManager.variableManager.heart);
                 bonus.transform.SetParent(parentSpawn.transform);
-
                 bonus.transform.position = parentSpawn.transform.position;
-
             }
-
         }
-
-    }
-
-    private IEnumerator MultiplyScore()
-    {
-        yield return new WaitForSeconds(VariableManager.variableManager.durationMultiplicateur);
-        VariableManager.variableManager.multiplyScore = 1;
     }
 
 }
