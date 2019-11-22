@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Julien.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Game/Menu.unity
     guid: ee29070b8c9c2214cb1e189098e1a865
@@ -20,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Nassim.unity
     guid: 6fdbbea4f8ecbfd4694c766ef89389b9
+  - enabled: 0
+    path: Assets/Scenes/Julien.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
