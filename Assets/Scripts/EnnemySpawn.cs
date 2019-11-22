@@ -44,23 +44,24 @@ public class EnnemySpawn : MonoBehaviour
 
     private void Update()
     {
-        if (!VariableManager.variableManager.gameOver)
-        {
-            timer += Time.deltaTime;
-            if (timer >= 5 - 4 * VariableManager.variableManager.difficulty)
+        if (VariableManager.variableManager.startGame)
+            if (!VariableManager.variableManager.gameOver)
             {
-                timer = 0f;
-                SpawnEnnemy();
+                timer += Time.deltaTime;
+                if (timer >= 5 - 4 * VariableManager.variableManager.difficulty)
+                {
+                    timer = 0f;
+                    SpawnEnnemy();
+                }
+                if (VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+                {
+                    SpawnBattery();
+                }
             }
-            if (VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+            else
             {
-                SpawnBattery();
+                DeactivateAll();
             }
-        }
-        else
-        {
-            DeactivateAll();
-        }
     }
 
     private void InitPoolList()
@@ -132,9 +133,9 @@ public class EnnemySpawn : MonoBehaviour
             negZ = -1;
         }
 
-        batteryObject.transform.position = new Vector3(negX * Random.Range(0.5f, 1.0f),
+        batteryObject.transform.position = new Vector3(negX * Random.Range(0.5f, 0.7f),
             batteryObject.transform.position.y,
-            negZ * Random.Range(0.5f, 1.0f));
+            negZ * Random.Range(0.5f, 0.7f));
         batteryObject.SetActive(true);
         batteryObject.GetComponent<BatteryAudio>().bzzt.Play();
     }
@@ -202,10 +203,6 @@ public class EnnemySpawn : MonoBehaviour
                 bonus.transform.SetParent(parentSpawn.transform);
                 bonus.transform.position = parentSpawn.transform.position;
             }
-        }
-        else
-        {
-            Debug.Log(Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position));
         }
     }
 

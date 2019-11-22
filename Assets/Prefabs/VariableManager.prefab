@@ -825,7 +825,7 @@ MonoBehaviour:
   normalColor: {r: 0.23921569, g: 1, b: 0.69803923, a: 1}
   noBatteryColor: {r: 1, g: 0.23113209, b: 0.35176998, a: 1}
   outOfBattery: {fileID: 4168856783180410537}
-  lifeEnemy: 2
+  lifeEnemy: 1
   enemySpawnDistance: 4
   enemySpeed: 0.3
   distBetweenEnemyAndPlayerToDamagePlayer: 0.3
@@ -833,7 +833,7 @@ MonoBehaviour:
   batteryUsage: 10
   battery: 100
   pointsPerEnemyDead: 100
-  lifePlayer: 10
+  lifePlayer: 7
   endSounds:
   - {fileID: 1312665384}
   - {fileID: 163000260}

@@ -18,9 +18,11 @@ public class ImageFill : MonoBehaviour
     private float currentVelFill;
     private Vector3 initialRightPos;
     [SerializeField] private float targetFill = 1f;
+    private bool useBattery;
 
     private void Start()
     {
+        useBattery = false;
         initialRightPos = rightImage ? rightImage.transform.position : Vector3.right;
     }
 
@@ -42,14 +44,55 @@ public class ImageFill : MonoBehaviour
             float smoothFill = Mathf.SmoothDamp(fillImage.fillAmount, targetFill, ref currentVelFill, fillSmoothness);
             fillImage.fillAmount = smoothFill;
 
-
-            for (int i = 0; i < fillImages.Length; i++)
+            if (!useBattery)
             {
-                fillImages[i].fillAmount = smoothFill;
+                if (fillImage.fillAmount > 0.8f)
+                {
+                    fillImage.color = new Color(0.33f, 1, MapValues(fillImage.fillAmount, 0.8f, 1, 0.33f, 0.66f), 1);
+                }
+                else if (fillImage.fillAmount > 0.6f)
+                {
+                    fillImage.color = new Color(MapValues(fillImage.fillAmount, 0.6f, 0.8f, 1, 0.33f), 1, 0.33f, 1);
+                }
+                else if (fillImage.fillAmount > 0.2f)
+                {
+                    fillImage.color = new Color(1, MapValues(fillImage.fillAmount, 0.2f, 0.6f, 0.33f, 1), 0.33f, 1);
+                }
+                else
+                {
+                    fillImage.color = new Color(1, MapValues(fillImage.fillAmount, 0, 0.2f, 0, 0.33f), MapValues(fillImage.fillAmount, 0, 0.2f, 0, 0.33f), 1);
+                }
+
+                for (int i = 0; i < fillImages.Length; i++)
+                {
+                    fillImages[i].fillAmount = smoothFill;
+                }
             }
 
-            if(rightImage && leftImage)
+            if (VariableManager.variableManager.IsDamaging())
+            {
+                if (useBattery)
+                {
+                    fillImage.color = Color.white;
+                    useBattery = false;
+                }
+                else
+                {
+                    useBattery = true;
+                }
+            }
+            else
+            {
+                useBattery = false;
+            }
+
+            if (rightImage && leftImage)
                 rightImage.transform.position = Vector3.Lerp(leftImage.transform.position, initialRightPos, smoothFill);
         }
+    }
+
+    private float MapValues(float x, float inMin, float inMax, float outMin, float outMax)
+    {
+        return (x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
     }
 }
