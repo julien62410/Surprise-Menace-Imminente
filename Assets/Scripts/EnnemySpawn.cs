@@ -12,6 +12,7 @@ public class EnnemySpawn : MonoBehaviour
     private List<GameObject> ennemyPoolList = new List<GameObject>();
     private GameObject batteryObject;
     private float timer;
+    private float startTimer;
 
     private void OnEnable()
     {
@@ -37,6 +38,7 @@ public class EnnemySpawn : MonoBehaviour
 
     private void Start()
     {
+        startTimer = 0f;
         timer = 0f;
         InitPoolList();
         SpawnEnnemy();
@@ -45,23 +47,25 @@ public class EnnemySpawn : MonoBehaviour
     private void Update()
     {
         if (VariableManager.variableManager.startGame)
-            if (!VariableManager.variableManager.gameOver)
-            {
-                timer += Time.deltaTime;
-                if (timer >= 5 - 4 * VariableManager.variableManager.difficulty)
+        {
+            startTimer += Time.deltaTime;
+            if (startTimer >= 2)
+                if (!VariableManager.variableManager.gameOver)
                 {
-                    timer = 0f;
-                    SpawnEnnemy();
+                    timer += Time.deltaTime;
+                    if (timer >= 5 - 4 * VariableManager.variableManager.difficulty)
+                    {
+                        timer = 0f;
+                        SpawnEnnemy();
+                    }
+                    if (VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+                        SpawnBattery();
                 }
-                if (VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+                else
                 {
-                    SpawnBattery();
+                    DeactivateAll();
                 }
-            }
-            else
-            {
-                DeactivateAll();
-            }
+        }
     }
 
     private void InitPoolList()
@@ -189,7 +193,7 @@ public class EnnemySpawn : MonoBehaviour
         if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
         {
             GameObject bonus;
-            int rand = Random.Range(0, 6);
+            int rand = Random.Range(0, 2);
 
             if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
             {
