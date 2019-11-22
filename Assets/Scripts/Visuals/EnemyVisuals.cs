@@ -32,6 +32,12 @@ public class EnemyVisuals : MonoBehaviour
 
     public delegate void VisualEvent();
     public VisualEvent onDeathFeedbackPlayed;
+    private bool playMode = false;
+
+    private void Start()
+    {
+        playMode = true;
+    }
 
     private void OnEnable()
     {
@@ -94,9 +100,10 @@ public class EnemyVisuals : MonoBehaviour
         }
         if (rend)
         {
-            Material mat = rend.sharedMaterial;
-            mat.SetFloat("_Gonfle", maxGonfle * explosionProgress);
-            rend.sharedMaterial = mat;
+            //Material mat = rend.sharedMaterial;
+            if(playMode) rend.material.SetFloat("_Gonfle", maxGonfle * explosionProgress);
+            else rend.sharedMaterial.SetFloat("_Gonfle", maxGonfle * explosionProgress);
+            //rend.sharedMaterial = mat;
         }
     }
 

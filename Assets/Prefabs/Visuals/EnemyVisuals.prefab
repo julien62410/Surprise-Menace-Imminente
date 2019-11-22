@@ -19794,7 +19794,7 @@ MonoBehaviour:
   - {fileID: 3915269005381264129}
   - {fileID: 3053684250713073203}
   shake: 0.05
-  maxGonfle: 0.2
+  maxGonfle: 0.47
   rend: {fileID: 6030414359686216405}
   explosionPs: {fileID: 986796518937555616}
   toDeactivate:
