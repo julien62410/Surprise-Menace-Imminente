@@ -99,8 +99,7 @@ public class VariableManager : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< HEAD
-        difficulty = Mathf.Min(1, (float)score / 10000.0f);
+
         if (battery > 0)
         {
             foreach (AudioSource a in lowBattery)
@@ -117,9 +116,9 @@ public class VariableManager : MonoBehaviour
             }
             batterySound = true;
         }
-=======
+
         difficulty = Mathf.Min(0.5f, (float)score / (50f * (float)pointsPerEnemyDead));
->>>>>>> aab70078038e1fd8d5d217002a9ea4b40c2fce32
+
     }
 
     private void LateUpdate()
