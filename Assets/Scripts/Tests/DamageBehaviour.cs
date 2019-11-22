@@ -14,7 +14,7 @@ public class DamageBehaviour : MonoBehaviour
     private Collider col;
 
     [SerializeField] private EnemyVisuals visuals;
-    private float hpSave;
+    private float hpSave, savedPitch, savedVolume;
     private bool isInit = false;
 
     private bool gettingDamaged = false;
@@ -32,6 +32,8 @@ public class DamageBehaviour : MonoBehaviour
         if (sound)
         {
             sound.pitch += Random.Range(-0.1f, 0.1f);
+            savedPitch = sound.pitch;
+            savedVolume = sound.volume;
         }
     }
 
@@ -53,11 +55,14 @@ public class DamageBehaviour : MonoBehaviour
                 VariableManager.variableManager.Damaging();
 
                 VariableManager.variableManager.battery = Mathf.Max(0, VariableManager.variableManager.battery - VariableManager.variableManager.batteryUsage * Time.deltaTime);
+                sound.pitch = 3;
+                sound.volume = 0.5f;
             }
-
             else
             {
                 gettingDamaged = false;
+                sound.pitch = savedPitch;
+                sound.volume = savedVolume;
             }
 
             if (hp <= 0)
@@ -90,6 +95,7 @@ public class DamageBehaviour : MonoBehaviour
         }
         if (explosionSound)
         {
+            explosionSound.pitch = Random.Range(1f, 2f);
             explosionSound.Play();
         }
         if (visuals) visuals.DeathFeedback();

@@ -46,9 +46,10 @@ public class VariableManager : MonoBehaviour
 
 
     [Header("Audio")]
-    public AudioSource[] endSounds;
+    public AudioSource[] damageSounds;
     public AudioSource startSound;
     public AudioSource gameOverSound;
+    public AudioSource[] lowBattery;
 
     [Header("Bonus")]
     public GameObject heart;
@@ -73,12 +74,13 @@ public class VariableManager : MonoBehaviour
     [HideInInspector]
     public bool startGame;
 
-    private bool damaging, trueDamaging;
+    private bool damaging, trueDamaging, batterySound;
 
     private void Awake()
     {
         Time.timeScale = 1f;
         gameOver = false;
+        batterySound = false;
         score = 0;
         multiplyScore = 1;
         startGame = false;
@@ -98,6 +100,22 @@ public class VariableManager : MonoBehaviour
     private void Update()
     {
         difficulty = Mathf.Min(1, (float)score / 10000.0f);
+        if (battery > 0)
+        {
+            foreach (AudioSource a in lowBattery)
+            {
+                a.Stop();
+            }
+            batterySound = false;
+        }
+        else if(!batterySound)
+        {
+            foreach (AudioSource a in lowBattery)
+            {
+                a.Play();
+            }
+            batterySound = true;
+        }
     }
 
     private void LateUpdate()
@@ -137,7 +155,7 @@ public class VariableManager : MonoBehaviour
         lifePlayer--;
         LifeUI.Instance.Lose();
         lifeBar.SetFill(maxLifePlayer, lifePlayer);
-        foreach (AudioSource a in endSounds)
+        foreach (AudioSource a in damageSounds)
         {
             a.Play();
         }

@@ -112,6 +112,7 @@ public class EnnemySpawn : MonoBehaviour
                 _ennemy.transform.position.z);
             _ennemy.transform.eulerAngles = new Vector3(0, _rotation, 0);
             _ennemy.SetActive(true);
+            _ennemy.GetComponentInChildren<AudioSource>().pitch = Random.Range(1.5f, 2.5f);
             _ennemy.GetComponentInChildren<AudioSource>().Play();
         } else
         {
