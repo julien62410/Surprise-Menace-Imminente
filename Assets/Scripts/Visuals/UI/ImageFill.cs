@@ -36,14 +36,18 @@ public class ImageFill : MonoBehaviour
     private void Update()
     {
         UpdateFill();
-        Color f = fillImage.color;
-        Color glowCol = new Color(f.r, f.g, f.b, glow.color.a);
-        glow.color = glowCol;
+
+        if (glow)
+        {
+            Color f = fillImage.color;
+            Color glowCol = new Color(f.r, f.g, f.b, glow.color.a);
+            glow.color = glowCol;
+        }
     }
 
     private void UpdateFill()
     {
-        if(fillImage)
+        if (fillImage)
         {
             float smoothFill = Mathf.SmoothDamp(fillImage.fillAmount, targetFill, ref currentVelFill, fillSmoothness);
             fillImage.fillAmount = smoothFill;
