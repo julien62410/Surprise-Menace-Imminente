@@ -9,7 +9,6 @@ public class DetectSurfaces : MonoBehaviour
     private static DetectSurfaces _instance;
     public static DetectSurfaces Instance { get { return _instance; } }
 
-    public GameObject plane;
     public List<DetectedPlane> m_detectedPlanes = new List<DetectedPlane>();
     public List<GameObject> listPlaneInScene = new List<GameObject>();
 
@@ -57,7 +56,7 @@ public class DetectSurfaces : MonoBehaviour
         PlaneFoundInWorld.Invoke(anchor.gameObject);
 
         GameObject planeObject =
-            Instantiate(plane, anchor.transform.position, anchor.transform.rotation);
+            Instantiate(VariableManager.variableManager.surfacePrefab, anchor.transform.position, anchor.transform.rotation);
 
         listPlaneInScene.Add(planeObject);
         planeObject.transform.localScale = new Vector3(m_detectedPlane.ExtentX / 10, m_detectedPlane.ExtentX / 10, m_detectedPlane.ExtentZ / 10);
