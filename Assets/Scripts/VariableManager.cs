@@ -51,6 +51,7 @@ public class VariableManager : MonoBehaviour
     public AudioSource startSound;
     public AudioSource gameOverSound;
     public AudioSource[] lowBattery;
+    public AudioSource getHeart;
 
     [Header("Bonus")]
     public GameObject heart;
@@ -158,6 +159,7 @@ public class VariableManager : MonoBehaviour
     public void Heal()
     {
         lifePlayer = maxLifePlayer;
+        getHeart.Play();
         LifeUI.Instance.Earn();
     }
 

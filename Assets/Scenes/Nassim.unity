@@ -912,22 +912,22 @@ PrefabInstance:
         type: 3}
       propertyPath: damageSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 1855357473}
+      objectReference: {fileID: 0}
     - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
         type: 3}
       propertyPath: damageSounds.Array.data[1]
       value: 
-      objectReference: {fileID: 1855357472}
+      objectReference: {fileID: 0}
     - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
         type: 3}
       propertyPath: damageSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 1855357471}
+      objectReference: {fileID: 0}
     - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
         type: 3}
       propertyPath: damageSounds.Array.data[3]
       value: 
-      objectReference: {fileID: 1855357470}
+      objectReference: {fileID: 0}
     - target: {fileID: 2178950875820674876, guid: 29104b68b789ada40b59e41a9d75859c,
         type: 3}
       propertyPath: lowBattery.Array.data[0]
@@ -1018,32 +1018,23 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2223100567931917050, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 397059112504724640, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374442195362084157, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29104b68b789ada40b59e41a9d75859c, type: 3}
---- !u!82 &1855357470 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1331440502, guid: 29104b68b789ada40b59e41a9d75859c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1855357469}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1855357471 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 673569384, guid: 29104b68b789ada40b59e41a9d75859c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1855357469}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1855357472 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 163000260, guid: 29104b68b789ada40b59e41a9d75859c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1855357469}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1855357473 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 1312665384, guid: 29104b68b789ada40b59e41a9d75859c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1855357469}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1855357474 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3552397839325338461, guid: 29104b68b789ada40b59e41a9d75859c,
