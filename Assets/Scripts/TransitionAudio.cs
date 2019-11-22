@@ -35,8 +35,9 @@ public class TransitionAudio : MonoBehaviour
                 anim.SetTrigger("In");
                 if (v) v.startGame = true;
             }
-
         }
+
+        readyText.SetActive(v != null);
     }
 
     IEnumerator Sweesh()

@@ -153,6 +153,12 @@ public class VariableManager : MonoBehaviour
         }
     }
 
+    public void Heal()
+    {
+        lifePlayer = maxLifePlayer;
+        LifeUI.Instance.Earn();
+    }
+
     public void DamagePlayer(int direction)
     {
         lifePlayer--;

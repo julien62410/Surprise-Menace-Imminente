@@ -185,14 +185,13 @@ public class EnnemySpawn : MonoBehaviour
         }
         else if (objects.layer == LayerMask.NameToLayer("Heart"))
         {
-            VariableManager.variableManager.lifePlayer = VariableManager.variableManager.maxLifePlayer;
+            VariableManager.variableManager.Heal();
         }
 
         objects.GetComponentInChildren<EntityVisuals>().Pickup();
     }
 
     private void SpawnBonus(GameObject parentSpawn)
-
     {
 
         if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
@@ -238,4 +237,5 @@ public class EnnemySpawn : MonoBehaviour
         yield return new WaitForSeconds(VariableManager.variableManager.durationMultiplicateur);
         VariableManager.variableManager.multiplyScore = 1;
     }
+
 }
