@@ -820,6 +820,7 @@ MonoBehaviour:
   lifeBar: {fileID: 7114464399230404385}
   scoreText: {fileID: 1287403292586418206}
   damageFilter: {fileID: 8755144498953797043}
+  reticle: {fileID: 3552397839325338461}
   lifeEnemy: 2
   enemySpawnDistance: 4
   enemySpeed: 0.3
@@ -914,6 +915,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2084318773236932571, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.296875
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552397837996992057, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552397837996992057, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552397837996992057, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9245283
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84cf21ab59909d84e9f6f1c92ceda6c0, type: 3}
 --- !u!4 &1287403292176822429 stripped
@@ -956,5 +977,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6282b612175277941951b5396606fa0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3552397839325338461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3552397837996992057, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1400323428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
