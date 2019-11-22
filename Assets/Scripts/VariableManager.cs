@@ -19,7 +19,13 @@ public class VariableManager : MonoBehaviour
     public ImageFill lifeBar;
     public TextMeshProUGUI scoreText;
     public DamageFilter damageFilter;
+
+    [Header("Reticle")]
     public Image reticle;
+    public Color damageColor;
+    public Color normalColor;
+    public Color noBatteryColor;
+    public Animator outOfBattery;
 
     [Header("Enemy Stats")]
     public float lifeEnemy;
@@ -105,13 +111,24 @@ public class VariableManager : MonoBehaviour
         {
             trueDamaging = false;
         }
-        if (trueDamaging)
+
+        outOfBattery.SetBool("OutOfBattery", !(battery > 0));
+
+        if (battery > 0)
         {
-            reticle.color = Color.red;
+            if (trueDamaging)
+            {
+                reticle.color = damageColor;
+            }
+            else
+            {
+                reticle.color = normalColor;
+            }
         }
+
         else
         {
-            reticle.color = Color.white;
+            reticle.color = noBatteryColor;
         }
     }
 

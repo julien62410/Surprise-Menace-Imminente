@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &196916978
 Transform:
   m_ObjectHideFlags: 0
@@ -821,6 +821,10 @@ MonoBehaviour:
   scoreText: {fileID: 1287403292586418206}
   damageFilter: {fileID: 8755144498953797043}
   reticle: {fileID: 3552397839325338461}
+  damageColor: {r: 1, g: 0.8368457, b: 0.4009434, a: 1}
+  normalColor: {r: 0.23921569, g: 1, b: 0.69803923, a: 1}
+  noBatteryColor: {r: 1, g: 0.23113209, b: 0.35176998, a: 1}
+  outOfBattery: {fileID: 4168856783180410537}
   lifeEnemy: 1
   enemySpawnDistance: 4
   enemySpeed: 0.3
@@ -914,25 +918,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1287403293130764136, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2084318773236932571, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 2.296875
-      objectReference: {fileID: 0}
-    - target: {fileID: 3552397837996992057, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.9245283
-      objectReference: {fileID: 0}
-    - target: {fileID: 3552397837996992057, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.9245283
-      objectReference: {fileID: 0}
-    - target: {fileID: 3552397837996992057, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.9245283
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84cf21ab59909d84e9f6f1c92ceda6c0, type: 3}
@@ -990,3 +984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4168856783180410537 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4168856784565769165, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1400323428}
+  m_PrefabAsset: {fileID: 0}
