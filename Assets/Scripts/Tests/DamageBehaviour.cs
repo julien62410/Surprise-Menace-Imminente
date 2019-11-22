@@ -44,7 +44,7 @@ public class DamageBehaviour : MonoBehaviour
         Vector3 center = Camera.main.WorldToViewportPoint(col.bounds.center);
         if (!dead)
         {
-            if (VariableManager.variableManager.battery > 0 && center.x > 0 && center.y > 0 && center.z > 0 && center.x < 1 && center.y < 1)
+            if (VariableManager.variableManager.battery > 0 && center.x > 0.2f && center.y > 0.15f && center.z > 0 && center.x < 0.8f && center.y < 0.85f)
             {
                 hp = Mathf.Max(0, hp - Time.deltaTime); ;
                 if (visuals) visuals.DamageAnim();
@@ -73,7 +73,6 @@ public class DamageBehaviour : MonoBehaviour
     {
         ScoreUI.Instance.Earn();
         VariableManager.variableManager.score += (VariableManager.variableManager.pointsPerEnemyDead * VariableManager.variableManager.multiplyScore);
-        Debug.Log("hoy "+ VariableManager.variableManager.multiplyScore);
         if (sound)
         {
             StopAllCoroutines();

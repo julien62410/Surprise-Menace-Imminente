@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class VariableManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class VariableManager : MonoBehaviour
     public ImageFill lifeBar;
     public TextMeshProUGUI scoreText;
     public DamageFilter damageFilter;
+    public Image reticle;
 
     [Header("Enemy Stats")]
     public float lifeEnemy;
@@ -99,6 +101,14 @@ public class VariableManager : MonoBehaviour
         else
         {
             trueDamaging = false;
+        }
+        if (trueDamaging)
+        {
+            reticle.color = Color.red;
+        }
+        else
+        {
+            reticle.color = Color.white;
         }
     }
 
