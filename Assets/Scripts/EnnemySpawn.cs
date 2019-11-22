@@ -167,7 +167,7 @@ public class EnnemySpawn : MonoBehaviour
 
 
         }
-        else if (objects.layer == LayerMask.NameToLayer("X10"))
+        else if (objects.layer == LayerMask.NameToLayer("Multi"))
         {
             VariableManager.variableManager.multiplyScore = 10;
 
@@ -189,7 +189,7 @@ public class EnnemySpawn : MonoBehaviour
         if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
         {
             GameObject bonus;
-            int rand = Random.Range(0, 2);
+            int rand = Random.Range(0, 6);
 
             if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
             {

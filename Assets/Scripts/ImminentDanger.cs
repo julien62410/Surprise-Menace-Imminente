@@ -10,7 +10,7 @@ public class ImminentDanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Collider[] overlaped = Physics.OverlapSphere(transform.position, 0.3f, LayerMask.GetMask("Battery", "X2", "Heart"));
+        Collider[] overlaped = Physics.OverlapSphere(transform.position, 0.3f, LayerMask.GetMask("Battery", "Multi", "Heart"));
         BatteryUI.Instance.Lose();
 
         foreach (Collider col in overlaped)

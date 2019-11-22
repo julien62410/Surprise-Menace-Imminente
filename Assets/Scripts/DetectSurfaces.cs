@@ -30,6 +30,8 @@ public class DetectSurfaces : MonoBehaviour
     private void Update()
     {
         CheckLostTracking();
+        SleepScreen();
+        CheckIsCameraAllowed();
 
         if (Session.Status != SessionStatus.Tracking)
         {
@@ -67,7 +69,7 @@ public class DetectSurfaces : MonoBehaviour
 
     private void CheckLostTracking() // SOURCE : GOOGLE HELLO AR
     {
-        if (Session.Status == SessionStatus.LostTracking &&
+        if (Session.Status == SessionStatus.LostTracking ||
             Session.LostTrackingReason != LostTrackingReason.None)
         {
             foreach (GameObject plane in listPlaneInScene)
@@ -91,6 +93,30 @@ public class DetectSurfaces : MonoBehaviour
                     break;
             }
             return;
+        }
+    }
+
+    private void SleepScreen()
+    {
+        if (Session.Status != SessionStatus.Tracking)
+        {
+            Screen.sleepTimeout = SleepTimeout.SystemSetting;
+        }
+        else
+        {
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        }
+    }
+
+    private void CheckIsCameraAllowed()
+    {
+        if (Session.Status == SessionStatus.ErrorPermissionNotGranted)
+        {
+            Debug.Log("Camera permission is needed to run this application.");
+        }
+        else if (Session.Status.IsError())
+        {
+            Debug.Log( "ARCore encountered a problem connecting.  Please start the app again.");
         }
     }
 }

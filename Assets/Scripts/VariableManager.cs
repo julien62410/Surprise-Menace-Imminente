@@ -54,7 +54,7 @@ public class VariableManager : MonoBehaviour
     public GameObject heart;
     public GameObject multiplicateur;
     public int durationMultiplicateur;
-    public int distanceSpawnBonus;
+    public float distanceSpawnBonus;
 
     public static VariableManager variableManager = null;
 
