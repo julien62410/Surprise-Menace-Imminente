@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -97,7 +97,7 @@ public class VariableManager : MonoBehaviour
 
     private void Update()
     {
-        difficulty = Mathf.Min(1, (float)score / 10000.0f);
+        difficulty = Mathf.Min(0.5f, (float)score / (50f * (float)pointsPerEnemyDead));
     }
 
     private void LateUpdate()
