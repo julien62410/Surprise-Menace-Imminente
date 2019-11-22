@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -71,7 +71,7 @@ public class VariableManager : MonoBehaviour
     public int score;
     [HideInInspector]
     public bool gameOver;
-    [HideInInspector]
+    //[HideInInspector]
     public bool startGame;
 
     private bool damaging, trueDamaging, batterySound;
@@ -99,6 +99,7 @@ public class VariableManager : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< HEAD
         difficulty = Mathf.Min(1, (float)score / 10000.0f);
         if (battery > 0)
         {
@@ -116,6 +117,9 @@ public class VariableManager : MonoBehaviour
             }
             batterySound = true;
         }
+=======
+        difficulty = Mathf.Min(0.5f, (float)score / (50f * (float)pointsPerEnemyDead));
+>>>>>>> aab70078038e1fd8d5d217002a9ea4b40c2fce32
     }
 
     private void LateUpdate()

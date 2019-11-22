@@ -5,7 +5,7 @@ using UnityEngine;
 public class JaugeUI : MonoBehaviour
 {
     [Header("Jauge")]
-    [SerializeField] private Animator animator;
+    [SerializeField] protected Animator animator;
 
     public virtual void Earn()
     {

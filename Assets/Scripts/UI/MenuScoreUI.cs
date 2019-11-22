@@ -9,6 +9,8 @@ public class MenuScoreUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI best;
     [SerializeField] private TextMeshProUGUI last;
 
+    
+
     private void Start()
     {
         InitializeScores();

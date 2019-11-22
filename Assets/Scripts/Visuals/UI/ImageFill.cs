@@ -11,6 +11,7 @@ public class ImageFill : MonoBehaviour
     [SerializeField] private Image fillImage;
 
     [SerializeField] private Image[] fillImages;
+    [SerializeField] private Image glow;
 
     [Header("Fill Settings")]
     [SerializeField] private float fillSmoothness = 0.2f;
@@ -35,6 +36,9 @@ public class ImageFill : MonoBehaviour
     private void Update()
     {
         UpdateFill();
+        Color f = fillImage.color;
+        Color glowCol = new Color(f.r, f.g, f.b, glow.color.a);
+        glow.color = glowCol;
     }
 
     private void UpdateFill()
