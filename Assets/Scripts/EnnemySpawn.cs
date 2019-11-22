@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnnemySpawn : MonoBehaviour
 {
     private static EnnemySpawn _instance;
     public static EnnemySpawn Instance { get { return _instance; } }
+    public DetectSurfaces detectSurfaces;
+    public Text debug;
 
     private List<GameObject> ennemyPoolList = new List<GameObject>();
     private GameObject batteryObject;
@@ -13,12 +16,12 @@ public class EnnemySpawn : MonoBehaviour
 
     private void OnEnable()
     {
-        DetectSurfaces.Instance.PlaneFoundInWorld += SpawnBonus;
+        detectSurfaces.PlaneFoundInWorld += SpawnBonus;
     }
 
     private void OnDisable()
     {
-        DetectSurfaces.Instance.PlaneFoundInWorld -= SpawnBonus;
+        detectSurfaces.PlaneFoundInWorld -= SpawnBonus;
     }
 
     private void Awake()
@@ -123,7 +126,7 @@ public class EnnemySpawn : MonoBehaviour
 
         if (Random.Range(-1, 1) < 0)
         {
-            negZ = -1;
+            negX = -1;
         }
         if (Random.Range(-1, 1) < 0)
         {
@@ -185,20 +188,25 @@ public class EnnemySpawn : MonoBehaviour
 
     private void SpawnBonus (GameObject parentSpawn)
     {
-        GameObject bonus;
-        int rand = Random.Range(0, 4);
-
-        if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
+        if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
         {
-            if (rand == 0)
-                bonus = Instantiate(VariableManager.variableManager.heart);
-            else if (rand == 1)
-                bonus = Instantiate(VariableManager.variableManager.multiplicateur);
-            else
-                return;
+            GameObject bonus;
+            int rand = Random.Range(0, 2);
 
-            bonus.transform.SetParent(parentSpawn.transform);
-            bonus.transform.position = Vector3.zero;
+            debug.enabled = true;
+
+            if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
+            {
+                if (rand == 0)
+                    bonus = Instantiate(VariableManager.variableManager.heart);
+                else if (rand == 1)
+                    bonus = Instantiate(VariableManager.variableManager.multiplicateur);
+                else
+                    return;
+
+                bonus.transform.SetParent(parentSpawn.transform);
+                bonus.transform.position = Vector3.zero;
+            }
         }
     }
 
