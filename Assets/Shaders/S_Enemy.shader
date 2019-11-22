@@ -24,6 +24,8 @@ Shader "Unlit/S_Enemy"
 		_ArmStep("Arm Step", float) = 0.5
 		_ArmDistort("Arm Distort", float) = 0.2
 		_ArmExponent("Arm Exponent", float) = 1.5
+
+		_Emissive("Emissive", float) = 1
 		/*[Header(Mouth)]
 		_MouthSize("Mouth Size", Range(0,5)) = 0.5
 		_MouthSmooth("Mouth Smoothness", Range(0,1)) = 0.5*/
@@ -72,6 +74,7 @@ Shader "Unlit/S_Enemy"
 			fixed4 _FresnelColor;
 			fixed4 _ShadowColor;
 			float _ShadowSmoothness;
+			float _Emissive;
 
 			float _WiggleSpeed;
 			float _WiggleStrength;
@@ -159,7 +162,7 @@ Shader "Unlit/S_Enemy"
 				fixed4 applyShadow = lerp(col * _ShadowColor, col, shadow);
 				fixed4 fresn = fresnel(i.normal, i.viewDir, 1) * _FresnelColor;
 				col = applyShadow + fresn;
-
+				col.rgb *= _Emissive;
                 return col;
             }
             ENDCG

@@ -25,14 +25,18 @@ public class EnemyVisuals : MonoBehaviour
     [SerializeField] private float maxGonfle = 0.2f;
     [SerializeField] private Renderer rend;
 
+    [SerializeField] private ParticleSystem damagedPs;
 
     [Header("Climax")]
     [SerializeField] private ParticleSystem explosionPs;
     [SerializeField] private GameObject[] toDeactivate;
+   
 
     public delegate void VisualEvent();
     public VisualEvent onDeathFeedbackPlayed;
     private bool playMode = false;
+
+    private bool wasGettingDamaged = false;
 
     private void Start()
     {
@@ -59,14 +63,12 @@ public class EnemyVisuals : MonoBehaviour
         UpdateExplosion();
     }
 
-    public void DamageAnim()
+    public void Anim(bool damaged)
     {
-        animator.SetBool("damaged", true);
-    }
-
-    public void IdleAnim()
-    {
-        animator.SetBool("damaged", false);
+        animator.SetBool("damaged", damaged);
+        if(!wasGettingDamaged && damaged) damagedPs.Play();
+        if(wasGettingDamaged && !damaged) damagedPs.Stop();
+        wasGettingDamaged = damaged;
     }
 
     public void SetExplosionProgress(float hpMax, float currentHp)
