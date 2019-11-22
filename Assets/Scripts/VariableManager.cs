@@ -46,13 +46,14 @@ public class VariableManager : MonoBehaviour
     public GameObject heart;
     public GameObject multiplicateur;
     public int durationMultiplicateur;
+    public GameObject surfacePrefab;
 
     public static VariableManager variableManager = null;
 
     [HideInInspector]
     public float difficulty;
-    //[HideInInspector]
-    public int multiplyScore;
+    [HideInInspector]
+    public int multiplyScore = 1;
     [HideInInspector]
     public int maxLifePlayer;
     [HideInInspector]

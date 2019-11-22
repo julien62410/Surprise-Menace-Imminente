@@ -172,21 +172,21 @@ public class EnnemySpawn : MonoBehaviour
                 StopCoroutine(VariableManager.variableManager.waitForResetMultiplicateur);
             VariableManager.variableManager.waitForResetMultiplicateur = StartCoroutine("MultiplyScore");
 
-            //Destroy(objects);
+            Destroy(objects);
         }
         else if (objects.layer == LayerMask.NameToLayer("Heart"))
         {
             if (VariableManager.variableManager.lifePlayer < VariableManager.variableManager.maxLifePlayer)
                 VariableManager.variableManager.lifePlayer++;
 
-            //Destroy(objects);
+            Destroy(objects);
         }
     }
 
     private void SpawnBonus (GameObject parentSpawn)
     {
         GameObject bonus;
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 4);
 
         if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
         {
