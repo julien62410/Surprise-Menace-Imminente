@@ -19,6 +19,7 @@ public class VariableManager : MonoBehaviour
     public ImageFill lifeBar;
     public TextMeshProUGUI scoreText;
     public DamageFilter damageFilter;
+    public Animator gameUI;
 
     [Header("Reticle")]
     public Image reticle;
@@ -99,6 +100,7 @@ public class VariableManager : MonoBehaviour
 
     private void Update()
     {
+        gameUI.SetBool("visible", startGame);
 
         if (battery > 0)
         {
