@@ -59,7 +59,6 @@ public class TransitionAudio : MonoBehaviour
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Out"))
             {
                 c = false;
-                sweesh.Play();
             }
             yield return 0;
         }
