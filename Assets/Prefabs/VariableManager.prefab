@@ -826,10 +826,10 @@ MonoBehaviour:
   enemySpeed: 0.3
   distBetweenEnemyAndPlayerToDamagePlayer: 0.3
   arCamera: {fileID: 0}
-  batteryUsage: 5
+  batteryUsage: 10
   battery: 100
   pointsPerEnemyDead: 100
-  lifePlayer: 5
+  lifePlayer: 10
   endSounds:
   - {fileID: 1312665384}
   - {fileID: 163000260}
@@ -840,9 +840,7 @@ MonoBehaviour:
   heart: {fileID: 6280710824708958540, guid: 7055ae0839192ee4cb64a98f75d2ba30, type: 3}
   multiplicateur: {fileID: 4511702820697107912, guid: 200a79cd2eae0d8449db5ffc5e38bd7b,
     type: 3}
-  surfacePrefab: {fileID: 6535899771408385381, guid: 477c3bac277f9b048bfb18b978c76982,
-    type: 3}
-  durationMultiplicateur: 5
+  durationMultiplicateur: 10
   distanceSpawnBonus: 1
   difficulty: 0
   multiplyScore: 0
