@@ -160,6 +160,7 @@ public class VariableManager : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(5f);
 
+        startGame = false;
         SceneManager.LoadScene("Menu");
     }
 
