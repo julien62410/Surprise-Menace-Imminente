@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Julien.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Game/Menu.unity
     guid: ee29070b8c9c2214cb1e189098e1a865
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Game/Play.unity
     guid: 8c4d804b365fef3468d4fe13bc685551
   - enabled: 0
