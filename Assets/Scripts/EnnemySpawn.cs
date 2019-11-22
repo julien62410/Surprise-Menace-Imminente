@@ -8,7 +8,6 @@ public class EnnemySpawn : MonoBehaviour
     private static EnnemySpawn _instance;
     public static EnnemySpawn Instance { get { return _instance; } }
     public DetectSurfaces detectSurfaces;
-    public Text debug;
 
     private List<GameObject> ennemyPoolList = new List<GameObject>();
     private GameObject batteryObject;
@@ -167,9 +166,9 @@ public class EnnemySpawn : MonoBehaviour
 
 
         }
-        else if (objects.layer == LayerMask.NameToLayer("X2"))
+        else if (objects.layer == LayerMask.NameToLayer("X10"))
         {
-            VariableManager.variableManager.multiplyScore = 2;
+            VariableManager.variableManager.multiplyScore = 10;
 
             if (VariableManager.variableManager.waitForResetMultiplicateur != null)
                 StopCoroutine(VariableManager.variableManager.waitForResetMultiplicateur);
@@ -179,9 +178,7 @@ public class EnnemySpawn : MonoBehaviour
         }
         else if (objects.layer == LayerMask.NameToLayer("Heart"))
         {
-            if (VariableManager.variableManager.lifePlayer < VariableManager.variableManager.maxLifePlayer)
-                VariableManager.variableManager.lifePlayer++;
-
+            VariableManager.variableManager.lifePlayer = VariableManager.variableManager.maxLifePlayer;
             Destroy(objects);
         }
     }
@@ -193,8 +190,6 @@ public class EnnemySpawn : MonoBehaviour
             GameObject bonus;
             int rand = Random.Range(0, 2);
 
-            debug.enabled = true;
-
             if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
             {
                 if (rand == 0)
@@ -205,8 +200,12 @@ public class EnnemySpawn : MonoBehaviour
                     return;
 
                 bonus.transform.SetParent(parentSpawn.transform);
-                bonus.transform.position = Vector3.zero;
+                bonus.transform.position = parentSpawn.transform.position;
             }
+        }
+        else
+        {
+            Debug.Log(Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position));
         }
     }
 
