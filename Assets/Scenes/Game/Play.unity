@@ -348,9 +348,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 475a89fb40c3bfb4ea87c6edb735641f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0e8edfb3ee1511341973e07d3b20ea12, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -590,6 +590,56 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7308347589217493562, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691745941883469101, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691745941883469101, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691745941883469101, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691745941883469101, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691745941883469101, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159481188055295711, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159481188055295711, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159481188055295711, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159481188055295711, guid: 29104b68b789ada40b59e41a9d75859c,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159481188055295711, guid: 29104b68b789ada40b59e41a9d75859c,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
