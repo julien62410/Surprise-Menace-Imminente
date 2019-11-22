@@ -70,7 +70,7 @@ public class VariableManager : MonoBehaviour
     public int score;
     [HideInInspector]
     public bool gameOver;
-    [HideInInspector]
+    //[HideInInspector]
     public bool startGame;
 
     private bool damaging, trueDamaging;

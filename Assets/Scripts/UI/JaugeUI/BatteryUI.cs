@@ -16,20 +16,22 @@ public class BatteryUI : JaugeUI
 
     [SerializeField] private ImageFill batteryFill;
     private float initialBattery;
+    private VariableManager v;
 
     private void Start()
     {
-        if (VariableManager.variableManager)
-            initialBattery = VariableManager.variableManager.battery;
+        v = VariableManager.variableManager;
+        if (v)
+            initialBattery = v.battery;
     }
 
     private void Update()
     {
-        if (VariableManager.variableManager)
+        if (v)
         {
-            float currentBattery = VariableManager.variableManager.battery;
+            float currentBattery = v.battery;
             if (batteryFill) batteryFill.SetFill(initialBattery, currentBattery);
-
+            animator.SetBool("empty", v.battery == 0);
         }
     }
 }
