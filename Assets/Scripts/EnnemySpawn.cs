@@ -46,10 +46,14 @@ public class EnnemySpawn : MonoBehaviour
 
     private void Update()
     {
-        if (VariableManager.variableManager.startGame)
-        {
-            startTimer += Time.deltaTime;
-            if (startTimer >= 2)
+        if (VariableManager.variableManager.startGame)
+
+        {
+
+            startTimer += Time.deltaTime;
+
+            if (startTimer >= 2)
+
                 if (!VariableManager.variableManager.gameOver)
                 {
                     timer += Time.deltaTime;
@@ -64,7 +68,8 @@ public class EnnemySpawn : MonoBehaviour
                 else
                 {
                     DeactivateAll();
-                }
+                }
+
         }
     }
 
@@ -178,32 +183,52 @@ public class EnnemySpawn : MonoBehaviour
         }
         else if (objects.layer == LayerMask.NameToLayer("Heart"))
         {
-            VariableManager.variableManager.lifePlayer = VariableManager.variableManager.maxLifePlayer;
+            VariableManager.variableManager.Heal();
         }
 
         objects.GetComponentInChildren<EntityVisuals>().Pickup();
     }
 
-    private void SpawnBonus (GameObject parentSpawn)
-    {
-        if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
-        {
-            GameObject bonus;
-            int rand = Random.Range(0, 2);
-
-            if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
-            {
-                if (rand == 0)
-                    bonus = Instantiate(VariableManager.variableManager.heart);
-                else if (rand == 1)
-                    bonus = Instantiate(VariableManager.variableManager.multiplicateur);
-                else
-                    return;
-
-                bonus.transform.SetParent(parentSpawn.transform);
-                bonus.transform.position = parentSpawn.transform.position;
-            }
-        }
+    private void SpawnBonus (GameObject parentSpawn)
+
+    {
+
+        if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
+
+        {
+
+            GameObject bonus;
+
+            int rand = Random.Range(0, 2);
+
+
+
+            if (VariableManager.variableManager.heart != null && VariableManager.variableManager.multiplicateur != null)
+
+            {
+
+                if (rand == 0)
+
+                    bonus = Instantiate(VariableManager.variableManager.heart);
+
+                else if (rand == 1)
+
+                    bonus = Instantiate(VariableManager.variableManager.multiplicateur);
+
+                else
+
+                    return;
+
+
+
+                bonus.transform.SetParent(parentSpawn.transform);
+
+                bonus.transform.position = parentSpawn.transform.position;
+
+            }
+
+        }
+
     }
 
     private IEnumerator MultiplyScore()
