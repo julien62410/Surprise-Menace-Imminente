@@ -820,6 +820,7 @@ MonoBehaviour:
   lifeBar: {fileID: 7114464399230404385}
   scoreText: {fileID: 1287403292586418206}
   damageFilter: {fileID: 8755144498953797043}
+  gameUI: {fileID: 9020199515601885233}
   reticle: {fileID: 3552397839325338461}
   damageColor: {r: 1, g: 0.8368457, b: 0.4009434, a: 1}
   normalColor: {r: 0.23921569, g: 1, b: 0.69803923, a: 1}
@@ -929,11 +930,27 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 2.296875
       objectReference: {fileID: 0}
+    - target: {fileID: 2691745942644129865, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159481187196967867, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84cf21ab59909d84e9f6f1c92ceda6c0, type: 3}
 --- !u!4 &1287403292176822429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1287403293565849081, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1400323428}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &9020199515601885233 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9020199516395988309, guid: 84cf21ab59909d84e9f6f1c92ceda6c0,
     type: 3}
   m_PrefabInstance: {fileID: 1400323428}
   m_PrefabAsset: {fileID: 0}

@@ -19,6 +19,7 @@ public class VariableManager : MonoBehaviour
     public ImageFill lifeBar;
     public TextMeshProUGUI scoreText;
     public DamageFilter damageFilter;
+    public Animator gameUI;
 
     [Header("Reticle")]
     public Image reticle;
@@ -98,6 +99,7 @@ public class VariableManager : MonoBehaviour
     private void Update()
     {
         difficulty = Mathf.Min(0.5f, (float)score / (50f * (float)pointsPerEnemyDead));
+        gameUI.SetBool("visible", startGame);
     }
 
     private void LateUpdate()
