@@ -189,9 +189,9 @@ public class VariableManager : MonoBehaviour
 
         gameOverSound.Play();
 
+        startGame = false;
         yield return new WaitForSecondsRealtime(5f);
 
-        startGame = false;
         SceneManager.LoadScene("Menu");
     }
 
