@@ -51,6 +51,8 @@ public class DamageBehaviour : MonoBehaviour
                 hp = Mathf.Max(0, hp - Time.deltaTime); ;
                 gettingDamaged = true;
                 VariableManager.variableManager.Damaging();
+
+                VariableManager.variableManager.battery = Mathf.Max(0, VariableManager.variableManager.battery - VariableManager.variableManager.batteryUsage * Time.deltaTime);
             }
 
             else

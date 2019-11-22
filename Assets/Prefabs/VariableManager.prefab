@@ -821,7 +821,7 @@ MonoBehaviour:
   scoreText: {fileID: 1287403292586418206}
   damageFilter: {fileID: 8755144498953797043}
   reticle: {fileID: 3552397839325338461}
-  lifeEnemy: 2
+  lifeEnemy: 1
   enemySpawnDistance: 4
   enemySpeed: 0.3
   distBetweenEnemyAndPlayerToDamagePlayer: 0.3
@@ -829,7 +829,7 @@ MonoBehaviour:
   batteryUsage: 10
   battery: 100
   pointsPerEnemyDead: 100
-  lifePlayer: 10
+  lifePlayer: 7
   endSounds:
   - {fileID: 1312665384}
   - {fileID: 163000260}

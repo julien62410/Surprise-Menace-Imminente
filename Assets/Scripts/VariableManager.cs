@@ -64,6 +64,8 @@ public class VariableManager : MonoBehaviour
     public int score;
     [HideInInspector]
     public bool gameOver;
+    [HideInInspector]
+    public bool startGame;
 
     private bool damaging, trueDamaging;
 
@@ -73,6 +75,7 @@ public class VariableManager : MonoBehaviour
         gameOver = false;
         score = 0;
         multiplyScore = 1;
+        startGame = false;
         Application.targetFrameRate = 30;
         maxLifePlayer = lifePlayer;
 
@@ -133,6 +136,8 @@ public class VariableManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("highScores") || score > PlayerPrefs.GetInt("highScores"))
             PlayerPrefs.SetInt("highScores", score);
+
+        PlayerPrefs.SetInt("lastScore", score);
 
         gameOverSound.Play();
 
