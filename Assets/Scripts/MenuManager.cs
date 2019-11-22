@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator StartingGame()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(GameSceneName);
     }
 }
