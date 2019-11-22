@@ -184,18 +184,11 @@ public class EnnemySpawn : MonoBehaviour
 
     private void SpawnBonus(GameObject parentSpawn)
     {
+        GameObject bonus;
 
         if (Vector3.Distance(parentSpawn.transform.position, VariableManager.variableManager.arCamera.transform.position) > VariableManager.variableManager.distanceSpawnBonus)
-        {
-            GameObject bonus;
-
             if (VariableManager.variableManager.heart != null)
-            {
-                bonus = Instantiate(VariableManager.variableManager.heart);
-                bonus.transform.SetParent(parentSpawn.transform);
-                bonus.transform.position = parentSpawn.transform.position;
-            }
-        }
+                bonus = Instantiate(VariableManager.variableManager.heart,parentSpawn.transform);
     }
 
 }

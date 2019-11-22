@@ -91,7 +91,7 @@ MonoBehaviour:
   multiplicateur: {fileID: 4511702820697107912, guid: 200a79cd2eae0d8449db5ffc5e38bd7b,
     type: 3}
   durationMultiplicateur: 10
-  distanceSpawnBonus: 0.5
+  distanceSpawnBonus: 1
   difficulty: 0
   multiplyScore: 0
   maxLifePlayer: 0
