@@ -36,6 +36,12 @@ public class VariableManager : MonoBehaviour
     public int pointsPerEnemyDead;
     public int lifePlayer;
 
+
+    [Header("Audio")]
+    public AudioSource[] endSounds;
+    public AudioSource startSound;
+    public AudioSource gameOverSound;
+
     [Header("Bonus")]
     public GameObject heart;
     public GameObject multiplicateur;
@@ -54,14 +60,17 @@ public class VariableManager : MonoBehaviour
     public Coroutine waitForResetMultiplicateur = null;
     [HideInInspector]
     public int score;
+    [HideInInspector]
+    public bool gameOver;
 
-    private bool gameOver;
     private bool damaging, trueDamaging;
 
     private void Awake()
     {
         Time.timeScale = 1f;
         gameOver = false;
+        score = 0;
+        multiplyScore = 1;
         Application.targetFrameRate = 30;
         maxLifePlayer = lifePlayer;
 
@@ -72,12 +81,12 @@ public class VariableManager : MonoBehaviour
         }
         else if (variableManager != this)
             Destroy(gameObject);
+        startSound.Play();
     }
 
     private void Update()
     {
-        difficulty = Mathf.Min(1, (float)score / 100.0f);
-        scoreText.SetText(score.ToString());
+        difficulty = Mathf.Min(1, (float)score / 10000.0f);
     }
 
     private void LateUpdate()
@@ -98,6 +107,10 @@ public class VariableManager : MonoBehaviour
         lifePlayer--;
         LifeUI.Instance.Lose();
         lifeBar.SetFill(maxLifePlayer, lifePlayer);
+        foreach (AudioSource a in endSounds)
+        {
+            a.Play();
+        }
         damageFilter.Trigger(direction);
         if (lifePlayer <= 0 && !gameOver)
         {
@@ -111,11 +124,9 @@ public class VariableManager : MonoBehaviour
         if (!PlayerPrefs.HasKey("highScores") || score > PlayerPrefs.GetInt("highScores"))
             PlayerPrefs.SetInt("highScores", score);
 
-        Time.timeScale = 0f;
+        gameOverSound.Play();
 
-        yield return new WaitForSecondsRealtime(2);
-
-        Time.timeScale = 1f;
+        yield return new WaitForSecondsRealtime(5f);
 
         SceneManager.LoadScene("Menu");
     }

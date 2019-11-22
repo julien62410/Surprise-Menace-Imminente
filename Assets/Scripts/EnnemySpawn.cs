@@ -42,15 +42,22 @@ public class EnnemySpawn : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= 5 - 4 * VariableManager.variableManager.difficulty)
+        if (!VariableManager.variableManager.gameOver)
         {
-            timer = 0f;
-            SpawnEnnemy();
+            timer += Time.deltaTime;
+            if (timer >= 5 - 4 * VariableManager.variableManager.difficulty)
+            {
+                timer = 0f;
+                SpawnEnnemy();
+            }
+            if (VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+            {
+                SpawnBattery();
+            }
         }
-        if (VariableManager.variableManager.battery <= 25 && !batteryObject.activeInHierarchy)
+        else
         {
-            SpawnBattery();
+            DeactivateAll();
         }
     }
 
@@ -69,6 +76,23 @@ public class EnnemySpawn : MonoBehaviour
         }
     }
 
+    private void DeactivateAll()
+    {
+        foreach (Transform tsf in VariableManager.variableManager.enemyPool.transform)
+        {
+            if (tsf.gameObject.layer == LayerMask.NameToLayer("Battery"))
+            {
+                batteryObject.SetActive(false);
+                batteryObject.GetComponent<BatteryAudio>().bzzt.Play();
+            }
+            else
+            {
+                tsf.gameObject.SetActive(false);
+                tsf.gameObject.GetComponentInChildren<AudioSource>().Stop();
+
+            }
+        }
+    }
     private void SpawnEnnemy()
     {
         GameObject _ennemy = GetFirstFreeEnnemyInPool();
@@ -110,7 +134,7 @@ public class EnnemySpawn : MonoBehaviour
             batteryObject.transform.position.y,
             negZ * Random.Range(0.5f, 1.0f));
         batteryObject.SetActive(true);
-        //batteryObject.GetComponentInChildren<AudioSource>().Play();
+        batteryObject.GetComponent<BatteryAudio>().bzzt.Play();
     }
 
     private GameObject GetFirstFreeEnnemyInPool()
@@ -131,7 +155,13 @@ public class EnnemySpawn : MonoBehaviour
         {
             VariableManager.variableManager.battery = 100f;
             BatteryUI.Instance.Earn();
+
             objects.GetComponentInChildren<BatteryVisuals>().Pickup();
+            objects.GetComponent<BatteryAudio>().grab.Play();
+            objects.GetComponent<BatteryAudio>().bzzt.Stop();
+
+            objects.GetComponentInChildren<BatteryVisuals>().Pickup();
+
 
         }
         else if (objects.layer == LayerMask.NameToLayer("X2"))

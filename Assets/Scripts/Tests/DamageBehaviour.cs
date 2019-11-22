@@ -73,7 +73,7 @@ public class DamageBehaviour : MonoBehaviour
     {
         ScoreUI.Instance.Earn();
         VariableManager.variableManager.score += (VariableManager.variableManager.pointsPerEnemyDead * VariableManager.variableManager.multiplyScore);
-
+        Debug.Log("hoy "+ VariableManager.variableManager.multiplyScore);
         if (sound)
         {
             StopAllCoroutines();

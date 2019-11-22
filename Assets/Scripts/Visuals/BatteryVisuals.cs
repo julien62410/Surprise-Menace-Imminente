@@ -28,6 +28,6 @@ public class BatteryVisuals : MonoBehaviour
             meshes[i].SetActive(true);
         }
         coll.enabled = true;
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     }
 }
